@@ -1,0 +1,52 @@
+# nc-grandma
+
+[Resource Preview](https://www.youtube.com/watch?v=NfV0mwMih3g)
+
+## Simple NPC Medical System for FiveM
+
+[Constant Development Discord](https://discord.gg/nchub)
+[Constant Development Tebex](https://constant-development.tebex.io/)
+[Constant RolePlay Discord](https://discord.gg/nchub)
+
+This Resource is setup for you to have an NPC(Grandma - Configurable) that would Heal your Players in a way that would allow them to avoid Pillbox in an Illegal/Heated circumstance.
+
+## Optionals:
+
+### Optional Targets:
+
+- [qb-target](https://github.com/Renewed-Scripts/qb-target)
+- [qtarget](https://github.com/overextended/qtarget)
+
+### Optional Notifications:
+
+- [okokNotify](https://okok.tebex.io/package/4724993)
+- [mythic_notify](https://github.com/wowpanda/mythic_notify)
+- [tnj-notify](https://github.com/tnj-development/tnj-notify)
+
+### Optional Minigame:
+
+- [qb-lockpick](https://github.com/Project-Sloth/qb-lockpick)
+- [qb-lock](https://github.com/Nathan-FiveM/qb-lock)
+- [qb-skillbar](https://github.com/qbcore-framework/qb-skillbar)
+
+### Optional DrawText:
+
+- [QBCore-DrawText](https://github.com/qbcore-framework/nchub)
+- [okokTextUI](https://okok.tebex.io/package/4725001)
+
+## Additional Credits
+
+### [tnj-development](https://github.com/tnj-development)
+
+* Added TNJ's Hug System | It was removed from their Repository although, we are using it within this Resource.
+
+## Installation
+
+* If you encounter any issues whilst Installing or Using/Enforcing this Resource, please feel free to Open a Ticket within the [Constant Development Discord](https://discord.gg/gSQbshCNv4).
+
+### Config.Framework.Framework.Logs
+## nc-smallresources/server/logs.lua
+* If using QBCore Logs --> nc-smallresources/server/logs.lua | Add the following within ```local Webhooks {}```
+```
+    ['constantdevelopmentgrandma'] = 'YOUR_WEBHOOK_HERE',
+```
