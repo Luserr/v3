@@ -1,0 +1,23 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>ut_nbunker.ymap</Item>
+    <Item>cs5_occl_05.ymap</Item>
+    <Item>cs5_occl_04.ymap</Item>
+    <Item>cs1_far_occl_01.ymap</Item>
+    <Item>hei_ch3_occl_03.ymap</Item>
+    <Item>cs5_2_grass_1.ymap</Item>
+    <Item>cs5_2_strm_0.ymap</Item>
+    <Item>cs5_2_grass_0.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>ut_nbunker_shell.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+</CodeWalkerProject>
