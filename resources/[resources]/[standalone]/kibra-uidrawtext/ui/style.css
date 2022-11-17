@@ -1,0 +1,56 @@
+.MainClass {
+    background: rgb(15 26 32);
+    padding-top: 1px;
+    position: relative;
+    margin: auto;
+    top: 89vh;
+    padding-right: 5vh;
+    padding-bottom: 1px;
+    padding-left: 5vh;
+    border: 1px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-radius: 1vh;
+    display: none;
+    width: fit-content;
+    
+}
+
+.border-gradient-purple {
+    border-image-source: linear-gradient(to left, #3a71d5, #45a4a9);
+}
+
+.notifytext {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    font-weight: 600;
+}
+
+.BoldText {
+    font-weight: 700;
+    color: #17a1af;
+}
+
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0%);
+     }
+}
+
+@keyframes fadeOutBottom {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+     }
+     to {
+        opacity: 0;
+        transform: translateX(50px);
+     }
+}
+

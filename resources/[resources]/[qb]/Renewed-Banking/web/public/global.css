@@ -1,0 +1,109 @@
+:root {
+    --clr-primary: #30475d;
+    --clr-primary-light: #30475d;
+    --clr-primary-dark: transparant;
+
+    --clr-green: rgb(147,240,116);
+    --clr-orange: rgb(249,165,98);
+    --clr-grey: rgb(225,223,226);
+
+    --font-family:
+    "Arial",sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+a,
+img,
+button,
+input,
+label,
+select,
+span,
+i {
+    display: inline-block;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+html {
+    font-size: 100%;
+}
+body {
+    min-height: 100vh;
+    font-family: var(--font-family);
+    background-color: var(--clr-primary-dark);
+    color: #fff;
+}
+
+h3.heading {
+    font-size: 2rem;
+    font-weight: lighter;
+    margin-top: 1rem;
+}
+
+.btn {
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    transition: 0.25s;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-grey {
+    background-color: var(--clr-grey);
+    border: 2px solid var(--clr-grey);
+}
+.btn-orange {
+    background-color: var(--clr-orange);
+    border: 2px solid var(--clr-orange);
+}
+.btn-green {
+    background-color: var(--clr-green);
+    border: 2px solid var(--clr-green);
+}
+
+.btn-grey:is(:hover, :focus, :focus-within) {
+    background-color: rgb(225,223,226, 0.8);
+}
+.btn-orange:is(:hover, :focus, :focus-within) {
+    background-color: rgb(249,165,98, 0.8);
+}
+.btn-green:is(:hover, :focus, :focus-within) {
+    background-color: rgb(147,240,116, 0.8);
+}
+
+.scroller {
+    --size: 10rem;
+    overflow-y: scroll;
+    margin: auto 0;
+    height: calc(100% - 10rem);
+    margin-top: calc(var(--size) / 2);
+}
+
+.scroller::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroller {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

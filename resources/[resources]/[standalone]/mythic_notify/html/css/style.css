@@ -1,0 +1,72 @@
+body {
+    background-color: transparent !important;
+}
+
+.template,
+.notification {
+    display: none;
+}
+
+.notif-container {
+    width: 20%;
+    position: absolute;
+    right: 15%;
+    display: table;
+}
+
+.icon {
+    font-family: 'Material Icons';
+    background-color: transparent !important;
+    padding-right: 10px;
+    margin-top: -4px;
+    font-size: 14px;
+    float: left;
+    display: table-cell;
+}
+
+.icon.ambulance,
+.icon.police {
+    margin-top: 5 !important;
+}
+
+.notification {
+    padding: 10px;
+    border-radius: 5px;
+    font: caption;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.caption {
+    padding-top: 7px;
+    font: caption;
+    font-size: 12px;
+    margin-left: 35px;
+}
+
+.success {
+    background: #72cc72;
+    color: #ffffff;
+}
+
+.inform {
+    background-color: #46a3d1;
+    color: #ffffff;
+}
+
+.error {
+    background: #e03232;
+    color: #ffffff;
+}
+
+
+.police {
+    background: #2200e4;
+    color: #ffffff;
+}
+
+.ambulance {
+    background: #fa6915;
+    color: #ffffff;
+}

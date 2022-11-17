@@ -1,0 +1,5 @@
+{
+    "date": "Jul 24, 2022",
+    "version": "3.0.4",
+    "changelog": "Fixed:\n• Issue with TxAdmin Names\n• Issue with not being able to find channels.\n• Screenshot command error.\n• Random number in console."
+}

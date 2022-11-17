@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bebas Neue', cursive;
+    user-select: none;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-container {
+    width: 70%;
+    height: 80%;
+    background: linear-gradient(90deg, rgba(28, 28, 28, 0.592) -3.15%, rgba(0, 0, 0, 0.696) 100%);
+    border: 1.21537px solid #474747;
+    margin-inline: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.header {
+    color: #FFFFFF;
+    font-size: 10vh;
+    text-align: center;
+    height: 10vh;
+    padding-top: 1vh;
+}
+
+.form-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+    margin-inline: auto;
+    margin-top: 5vh;
+    height: 40%;
+    text-align: center;
+}
+
+.form-inputs input[type="text"], .form-inputs input[type="number"] {
+    color: #FFFFFF;
+    font-size: 4vh;
+    outline: 0;
+    border: 0;
+    background: linear-gradient(180deg, rgba(255, 72, 82, 0.15) 0%, rgba(252, 71, 81, 0) 100%);
+    width: 50%;
+    text-align: center;
+    padding: 2vh 2vw 1vh 2vw;
+}
+
+.form-inputs input[type="text"]::placeholder, .form-inputs input[type="number"]::placeholder, textarea::placeholder {
+    color: #FFFFFF;
+}
+
+.form-inputs input[type="text"]:focus, .form-inputs input[type="number"]:focus, textarea:focus {
+    color: #FFFFFF;
+    background: linear-gradient(180deg, rgba(250, 0, 12, 0.582) 0%, rgba(252, 71, 81, 0) 100%);
+}
+
+.form-inputs input[type="date"] {
+    color: #FFFFFF;
+    font-size: 4vh;
+    outline: 0;
+    border: 0;
+    background: linear-gradient(180deg, rgba(255, 72, 82, 0.15) 0%, rgba(252, 71, 81, 0) 100%);
+    width: 50%;
+    text-align: center;
+    padding: 2vh 2vw 1vh 2vw;
+}
+
+textarea {
+    color: #FFFFFF;
+    font-size: 4vh;
+    outline: 0;
+    border: 0;
+    background: linear-gradient(180deg, rgba(255, 72, 82, 0.15) 0%, rgba(252, 71, 81, 0) 100%);
+    width: 40vw;
+    height: 16vh;
+    text-align: center;
+    padding: 2vh 2vw 0 2vw;
+}
+
+.submit-btn {
+    cursor: pointer;
+    margin-top: 5vh;
+    margin-inline: auto;
+    width: fit-content;
+    height: fit-content;
+    font-size: 3vh;
+    padding: 1vh 5vw 1vh 5vw;
+    color: #FFFFFF;
+    transform: skewX(-5deg);
+    background: linear-gradient(180deg, rgba(203, 22, 32, 0.8) 0%, rgba(182, 32, 41, 0.54) 100%);
+}
