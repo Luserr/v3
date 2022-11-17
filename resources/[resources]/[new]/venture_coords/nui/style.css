@@ -1,0 +1,12 @@
+body {
+  background: transparent !important;
+}
+
+current-coords {
+ background:rgba(17, 17, 17, 0.6); 
+ position: absolute; 
+ right:15px; top:110px; 
+ max-width:110px; 
+ display:none;
+ font-style: italic;
+}

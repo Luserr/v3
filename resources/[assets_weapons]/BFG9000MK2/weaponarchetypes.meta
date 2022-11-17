@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+    <Item>
+      <modelName>W_LR_BFG9000MK2</modelName>
+      <txdName>W_LR_BFG9000MK2</txdName>
+      <ptfxAssetName>null</ptfxAssetName>
+      <lodDist value="500"/>
+    </Item>
+  </InitDatas>
+</CWeaponModelInfo__InitDataList>
