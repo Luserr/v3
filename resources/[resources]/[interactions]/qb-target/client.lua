@@ -6,7 +6,8 @@ local table_wipe = table.wipe
 local pairs = pairs
 local CheckOptions
 local isTargeting = false
-
+local RhodoIsHacking = false
+local listSprite = {}
 ---------------------------------------
 ---Source: https://github.com/citizenfx/lua/blob/luaglm-dev/cfx/libs/scripts/examples/scripting_gta.lua
 ---Credits to gottfriedleibniz
@@ -72,11 +73,16 @@ exports('DisableNUI', DisableNUI)
 
 local function EnableNUI(options)
 	if not targetActive or hasFocus then return end
-	SetCursorLocation(0.5, 0.5)
-	SetNuiFocus(true, true)
-	SetNuiFocusKeepInput(true)
-	hasFocus = true
-	SendNUIMessage({response = "validTarget", data = options})
+	if RhodoIsHacking == true then
+		SetCursorLocation(0.5, 0.5)
+		SetNuiFocus(true, true)
+		SetNuiFocusKeepInput(true)
+		hasFocus = true
+		SendNUIMessage({response = "validTarget", data = options})
+		RhodoIsHacking = false
+	else
+		SendNUIMessage({response = "validTarget", data = options})
+	end
 end
 
 exports('EnableNUI', EnableNUI)
@@ -87,6 +93,7 @@ local function LeftTarget()
 	success, hasFocus = false, false
 	table_wipe(sendData)
 	SendNUIMessage({response = "leftTarget"})
+	RhodoIsHacking = false
 end
 
 exports('LeftTarget', LeftTarget)
@@ -131,6 +138,7 @@ local function CheckEntity(hit, datatable, entity, distance)
 		success = true
 		SendNUIMessage({response = "foundTarget", data = sendData[slot].targeticon})
 		DrawOutlineEntity(entity, true)
+		EnableNUI(nuiData)
 		while targetActive and success do
 			local _, _, dist, entity2, _ = RaycastCamera(hit, GetEntityCoords(playerPed))
 			if entity ~= entity2 then
@@ -140,6 +148,7 @@ local function CheckEntity(hit, datatable, entity, distance)
 			elseif not hasFocus and (IsControlPressed(0, Config.MenuControlKey) or IsDisabledControlPressed(0, Config.MenuControlKey)) then
 				EnableNUI(nuiData)
 				DrawOutlineEntity(entity, false)
+				RhodoIsHacking = true
 			else
 				for k, v in pairs(sendDistance) do
 					if v and dist > k then
@@ -259,6 +268,7 @@ local function EnableTarget()
 								success = true
 								SendNUIMessage({response = "foundTarget", data = sendData[slot].targeticon})
 								DrawOutlineEntity(entity, true)
+								EnableNUI(nuiData)
 								while targetActive and success do
 									local _, _, dist, entity2 = RaycastCamera(hit, GetEntityCoords(playerPed))
 									if entity == entity2 then
@@ -270,6 +280,7 @@ local function EnableTarget()
 										elseif not hasFocus and (IsControlPressed(0, Config.MenuControlKey) or IsDisabledControlPressed(0, Config.MenuControlKey)) then
 											EnableNUI(nuiData)
 											DrawOutlineEntity(entity, false)
+											RhodoIsHacking = true
 										else
 											for k, v in pairs(sendDistance) do
 												if v and dist > k then
@@ -316,7 +327,7 @@ local function EnableTarget()
 			else sleep += 20 end
 			if not success then
 				-- Zone targets
-				local closestDis, closestZone
+				local closestDis, closestZone, pedcoords
 				for _, zone in pairs(Zones) do
 					if distance < (closestDis or Config.MaxDistance) and distance <= zone.targetoptions.distance and zone:isPointInside(coords) then
 						closestDis = distance
@@ -355,6 +366,7 @@ local function EnableTarget()
 						success = true
 						SendNUIMessage({response = "foundTarget", data = sendData[slot].targeticon})
 						DrawOutlineEntity(entity, true)
+						EnableNUI(nuiData)
 						while targetActive and success do
 							local _, coords, distance = RaycastCamera(hit, GetEntityCoords(playerPed))
 							if not closestZone:isPointInside(coords) or distance > closestZone.targetoptions.distance then
@@ -363,6 +375,7 @@ local function EnableTarget()
 							elseif not hasFocus and (IsControlPressed(0, Config.MenuControlKey) or IsDisabledControlPressed(0, Config.MenuControlKey)) then
 								EnableNUI(nuiData)
 								DrawOutlineEntity(entity, false)
+								RhodoIsHacking = true
 							end
 							Wait(0)
 						end
