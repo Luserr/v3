@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 :root {
-    --color-1: #1E3955;
-    --color-2: #213F5F;
-    --color-3: #2C537B;
+    --color-1: #244c74;
+    --color-2: #1e3a56;
+    --color-3: #e43f5a;
     --color-4: #23405E;
-    --color-5: #152638;
+    --color-5: #222831;
     --color-6: #121f2c;
     --color-7: rgb(28, 54, 82);
     --color-8: #2554cc;
-    --color-9: #6E707C;
+    --color-9: #1e3a56;
     --color-10: #8f741b;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'sans-serif', sans-serif;
     overflow: hidden;
     display: none;
 }
 
-textarea {
-    font-family: 'Montserrat', sans-serif;
+textarea { 
+    font-family: 'sans-serif', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -34,7 +34,7 @@ input::-webkit-inner-spin-button {
 }
 
 .dashboard-page-container  {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -49,7 +49,8 @@ input::-webkit-inner-spin-button {
 }
 
 .profile-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
+    
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -60,7 +61,7 @@ input::-webkit-inner-spin-button {
 }
 
 .incidents-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -71,7 +72,7 @@ input::-webkit-inner-spin-button {
 }
 
 .bolos-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -82,7 +83,7 @@ input::-webkit-inner-spin-button {
 }
 
 .reports-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -93,7 +94,7 @@ input::-webkit-inner-spin-button {
 }
 
 .penalcode-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -104,7 +105,7 @@ input::-webkit-inner-spin-button {
 }
 
 .dmv-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -115,7 +116,7 @@ input::-webkit-inner-spin-button {
 }
 
 .weapons-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -126,7 +127,7 @@ input::-webkit-inner-spin-button {
 }
 
 .stafflogs-page-container  {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -138,7 +139,7 @@ input::-webkit-inner-spin-button {
 }
 
 .container-load {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -148,55 +149,8 @@ input::-webkit-inner-spin-button {
     display: none;
 }
 
-.header {
-    height: 7vh;
-    background-color: var(--color-1);
-    border: 5px solid #393B39;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    width: 96.5%;
-    position: absolute;
-    top: 5.5vh;
-    display: flex;
-    align-items: center;
-    user-select: none;
-}
-
-.header-left {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-left: 10px;
-    margin-right: 0px;
-}
-
-.header-middle {
-    background-color: var(--color-2);
-    border-radius: 15px;
-    width: fit-content;
-    height: fit-content;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    margin: auto;
-    font-size: 20px;
-}
-
-.header-right {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    margin: auto;
-    margin-right: 35px;
-    margin-left: 0px;
-}
-
 .main-container {
-    border-top: 5px solid var(--color-3);
+    border-top: 2px solid #e43f5a;
     width: 100%;
     height: 79.5%;
     position: absolute;
@@ -205,8 +159,8 @@ input::-webkit-inner-spin-button {
 }
 
 .nav-menu {
-    background-color: var(--color-1);
-    border-right: 5px solid var(--color-3);
+    background-color: #222831;
+    border-right: 5px solid #30475e;
     min-width: 22.5vh;
     height: 100%;
     display: flex;
@@ -216,25 +170,23 @@ input::-webkit-inner-spin-button {
 }
 
 .nav-item {
-    background-color: var(--color-4);
-    margin-top: 10px;
-    padding: 10px;
+    background-color: #222831;
+    padding: 19px;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
 }
 
 .nav-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .active-nav {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .warrants-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1e3a56;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -244,10 +196,10 @@ input::-webkit-inner-spin-button {
 }
 
 .warrants-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -275,7 +227,7 @@ input::-webkit-inner-spin-button {
 }
 
 .warrants-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     margin: auto;
     margin-bottom: 10px;
@@ -285,7 +237,7 @@ input::-webkit-inner-spin-button {
 }
 
 .warrants-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .warrant-image {
@@ -328,8 +280,8 @@ input::-webkit-inner-spin-button {
 }
 
 .quotes-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     width: 50vh;
     height: 75px;
     margin-top: 10px;
@@ -341,12 +293,12 @@ input::-webkit-inner-spin-button {
 
 .quote-title {
     font-size: 14px;
-    background-color: var(--color-4);
+    background-color: #222831;
     padding: 5px;
     margin: 10px 0px 10px 10px;
     text-align: center;
     color: white;
-    font-weight: bolder;
+    
     width: 85px;
     /* height: 30px; */
     text-shadow: black 1px 1px;
@@ -357,7 +309,7 @@ input::-webkit-inner-spin-button {
     margin-left: 10px;
     /* margin-bottom: 25px; */
     width: 100%;
-    background-color: var(--color-5);
+    background-color: #222831;
     height: 30px;
     padding: 10px;
     text-align: center;
@@ -372,8 +324,8 @@ input::-webkit-inner-spin-button {
 }
 
 .bulletin-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -386,10 +338,10 @@ input::-webkit-inner-spin-button {
 }
 
 .bulletin-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -399,7 +351,7 @@ input::-webkit-inner-spin-button {
     margin-bottom: 0px;
     width: 83.5%;
     align-items: center;
-    user-select: none;
+    
 }
 
 .bulletin-items-continer {
@@ -413,7 +365,7 @@ input::-webkit-inner-spin-button {
 }
 
 .bulletin-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 45vh;
     /* min-height: 7.7vh; */
     /* height: 7.7vh; */
@@ -424,7 +376,7 @@ input::-webkit-inner-spin-button {
 }
 
 .bulletin-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .bulletin-item-title {
@@ -484,8 +436,8 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .dispatch-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -496,10 +448,10 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .dispatch-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -512,10 +464,10 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .active-unit-title {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -531,9 +483,9 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .active-unit-count {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
-    font-weight: bolder;
+    
     font-size: 14px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -550,10 +502,10 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .calls-title {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -573,7 +525,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 #ems-count {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 #doj-count {
@@ -605,7 +557,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
     padding-right: 10px;
     padding-left: 10px;
     /* height: 3vh; */
-    background-color: var(--color-5);
+    background-color: #222831;
     display: flex;
     align-items: center;
     margin-bottom: 5px;
@@ -623,7 +575,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
 
     padding: 10px;
     height: 3vh;
-    background-color: var(--color-5);
+    background-color: #222831;
     display: flex;
     align-items: center;
     margin-bottom: 5px;
@@ -637,11 +589,11 @@ span.bulletin-item-info[contenteditable]:empty::before {
     padding-right: 15px;  
     color: white;
     font-size: 12px;
-    font-weight: bolder;
+    
     margin: auto;
     margin-left: 5px;
     margin-right: 0px;
-    background-color: #0B9509;
+    background-color: #4caf50;
     border-radius: 10px;
 }
 
@@ -660,7 +612,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
     padding-right: 15px;    
     color: white;
     font-size: 12px;
-    font-weight: bolder;
+    
     margin: auto;
     margin-left: 5px;
     margin-right: 0px;
@@ -673,7 +625,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .unit-ems {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .unit-doc {
@@ -689,7 +641,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
     margin-left: 10px;
     margin-right: 0px;
     font-size: 12px;
-    font-weight: bolder;
+    
     color: white;
 }
 
@@ -697,9 +649,9 @@ span.bulletin-item-info[contenteditable]:empty::before {
     margin: auto;
     margin-right: 5px;
     font-size: 12px;
-    font-weight: bolder;
+    
     color: white;
-    background-color: var(--color-3);
+    background-color: #30475e;
     padding: 5px;
     padding-left: 12.5px;
     padding-right: 12.5px;
@@ -719,7 +671,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
 
 .active-calls-item {
     height: fit-content;
-    background-color: var(--color-5);
+    background-color: #222831;
     display: flex;
     align-items: center;
     margin-bottom: 5px;
@@ -748,10 +700,10 @@ span.bulletin-item-info[contenteditable]:empty::before {
 }
 
 .call-number {
-    background-color: #950909;
+    background-color: #f44336;
     color: white;
     font-size: 15px;
-    font-weight: bolder;
+    
     padding: 2.5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -766,7 +718,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
     background-color: #097C95;
     color: white;
     font-size: 15px;
-    font-weight: bolder;
+    
     padding: 2.5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -780,7 +732,7 @@ span.bulletin-item-info[contenteditable]:empty::before {
 .call-title {
     color: white;
     font-size: 20px;
-    font-weight: bolder;
+    
     padding: 2.5px;
     padding-left: 0px;
     padding-right: 0px;
@@ -796,9 +748,9 @@ span.bulletin-item-info[contenteditable]:empty::before {
     margin-left: auto;
     margin-right: .5vh;
     font-size: 15px;
-    font-weight: bolder;
+    
     color: white;
-    background-color: var(--color-3);
+    background-color: #30475e;
     padding: 5px;
     padding-left: 12.5px;
     padding-right: 12.5px;
@@ -858,8 +810,8 @@ a {
 }
 
 .profile-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -871,10 +823,10 @@ a {
 
 
 .profile-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -887,11 +839,11 @@ a {
 }
 
 .profile-title:hover {
-    background-color: var(--color-3);
+    background-color: #222831;
 }
 
 .profile-search-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -931,7 +883,7 @@ a {
 }
 
 .profile-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     height: 9vh;
     margin: auto;
@@ -943,7 +895,7 @@ a {
 }
 
 .profile-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .profile-image {
@@ -980,7 +932,7 @@ a {
     border-radius: 10px;
     color: white;
     font-size: 12px;
-    font-weight: bolder;
+    
     background-color: #956E09;
 }
 
@@ -996,8 +948,8 @@ a {
 }
 
 .manage-profile-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1e3a56;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -1007,10 +959,10 @@ a {
 }
 
 .manage-profile-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1023,7 +975,7 @@ a {
 }
 
 .manage-profile-editing-title {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
     font-size: 15px;
     font-weight: lighter;
@@ -1046,7 +998,7 @@ a {
     font-weight: lighter;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #1b8f25;
+    background-color: #4caf50;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -1105,7 +1057,7 @@ a {
 }
 
 .line {
-    background-color: var(--color-3);
+    background-color: #30475e;
     height: 2px;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -1189,7 +1141,7 @@ a {
     outline: none;
     height: 100%;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -1204,7 +1156,7 @@ a {
     outline: none;
     height: 8%;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -1222,17 +1174,17 @@ a {
 }
 
 .manage-profile-licenses-container {
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     height: 15%;
 }
 
 .license-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1272,9 +1224,9 @@ a {
 .manage-profile-tags-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     min-height: 100px;
     max-height: 200px;
@@ -1282,10 +1234,10 @@ a {
 }
 
 .tags-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1299,10 +1251,10 @@ a {
 }
 
 .tags-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -1314,7 +1266,7 @@ a {
 }
 
 .tags-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .tags-holder {
@@ -1372,19 +1324,19 @@ span.tag-input[contenteditable]:empty::before {
 .manage-profile-vehs-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     max-height: 150px;
     overflow: scroll;
 }
 
 .vehs-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1425,19 +1377,19 @@ span.tag-input[contenteditable]:empty::before {
 .manage-profile-houses-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     max-height: 150px;
     overflow: scroll;
 }
 
 .houses-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1470,7 +1422,7 @@ span.tag-input[contenteditable]:empty::before {
     border-radius: 10px;
     color: black;
     font-size: 12px;
-    font-weight: bolder;
+    
     background-color: white;
     user-select: none;
 }
@@ -1478,19 +1430,19 @@ span.tag-input[contenteditable]:empty::before {
 .manage-profile-gallery-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     height: 18vh;
     overflow: scroll;
 }
 
 .gallery-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1504,10 +1456,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .gallery-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -1519,7 +1471,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .gallery-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .gallery-inner-container {
@@ -1540,19 +1492,19 @@ span.tag-input[contenteditable]:empty::before {
 .manage-convictions-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     max-height: 200px;
     overflow: scroll;
 }
 
 .convictions-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1580,9 +1532,9 @@ span.tag-input[contenteditable]:empty::before {
     z-index: 1;
     width: 120px;
     height: 120px;
-    border: 12px solid var(--color-1);
+    border: 12px solid #1E3955;
     border-radius: 50%;
-    border-top: 12px solid var(--color-3);
+    border-top: 12px solid #30475e;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
@@ -1594,9 +1546,9 @@ span.tag-input[contenteditable]:empty::before {
     z-index: 1;
     width: 120px;
     height: 120px;
-    border: 12px solid var(--color-4);
+    border: 12px solid #30475e;
     border-radius: 50%;
-    border-top: 12px solid var(--color-3);
+    border-top: 12px solid #30475e;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
@@ -1627,8 +1579,8 @@ span.tag-input[contenteditable]:empty::before {
     width: fit-content;
     padding: 2px;
     margin: 0;
-    border: 1px solid var(--color-3);
-    background: var(--color-5);
+    border: 1px solid #30475e;
+    background: #222831;
     z-index: 100;
     border-radius: 3px;
     box-shadow: 1px 1px 4px rgba(0,0,0,.2);
@@ -1708,7 +1660,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .revoke-licence:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .give-licence:hover {
@@ -1716,7 +1668,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .remove-image:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .expand-image:hover {
@@ -1728,7 +1680,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .gallery-upload-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -1757,8 +1709,8 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .penalcode-embed {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 96.5%;
@@ -1776,8 +1728,8 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .incidents-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -1787,10 +1739,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .incidents-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1803,11 +1755,11 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .incidents-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .incidents-search-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -1847,7 +1799,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .incidents-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     height: 5.5vh;
     margin: auto;
@@ -1859,7 +1811,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .incidents-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .incidents-top-holder {
@@ -1918,8 +1870,8 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -1931,10 +1883,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -1949,7 +1901,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-title:hover {
-    background-color: var(--color-3);
+    background-color: #222831;
 }
 
 .manage-incidents-create {
@@ -1959,7 +1911,7 @@ span.tag-input[contenteditable]:empty::before {
     padding-top: 5px;
     padding-bottom: 5px;
     align-items: center;
-    background-color: var(--color-4);
+    background-color: #30475e;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -1972,7 +1924,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-create:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-incidents-save {
@@ -1981,7 +1933,7 @@ span.tag-input[contenteditable]:empty::before {
     font-weight: lighter;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: #1b8f25;
+    background-color: #4caf50;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -2016,7 +1968,7 @@ span.tag-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-incidents-title-input input {
@@ -2039,7 +1991,7 @@ span.tag-input[contenteditable]:empty::before {
     outline: none;
     min-height: 30vh;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -2049,10 +2001,10 @@ span.tag-input[contenteditable]:empty::before {
 .manage-incidents-tags-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -2063,10 +2015,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-tags-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2080,14 +2032,14 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-tags-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-incidents-tags-add-btn {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7.25px;
     padding-bottom: 7.25px;
     margin: auto;
@@ -2132,10 +2084,10 @@ span.tag-input[contenteditable]:empty::before {
 .manage-incidents-officers-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -2146,10 +2098,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-officers-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2163,10 +2115,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-officers-add-btn {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7.25px;
     padding-bottom: 7.25px;
     margin: auto;
@@ -2180,7 +2132,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-officers-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-incidents-officers-holder {
@@ -2215,10 +2167,10 @@ span.tag-input[contenteditable]:empty::before {
 .manage-incidents-civilians-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -2229,10 +2181,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-civilians-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2246,10 +2198,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-civilians-add-btn {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7.25px;
     padding-bottom: 7.25px;
     margin: auto;
@@ -2263,7 +2215,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-civilians-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-incidents-civilians-holder {
@@ -2298,10 +2250,10 @@ span.tag-input[contenteditable]:empty::before {
 .manage-incidents-evidence-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -2312,10 +2264,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-evidence-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2329,10 +2281,10 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-evidence-add-btn {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7.25px;
     padding-bottom: 7.25px;
     margin: auto;
@@ -2346,7 +2298,7 @@ span.tag-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-evidence-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-incidents-evidence-holder {
@@ -2440,8 +2392,8 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .associated-incidents-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -2452,10 +2404,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .associated-incidents-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2468,16 +2420,16 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .associated-incidents-title:hover {
-    background-color: var(--color-3);
+    background-color: #222831;
 }
 
 .associated-incidents-tags-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -2488,10 +2440,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .associated-incidents-tags-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2505,14 +2457,14 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .associated-incidents-tags-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .associated-incidents-tags-add-btn {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7.25px;
     padding-bottom: 7.25px;
     margin: auto;
@@ -2555,7 +2507,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .incidents-upload-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -2590,10 +2542,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bulletin-add-btn {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -2605,16 +2557,16 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bulletin-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #222831;
 }
 
 .associated-incidents-user-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-bottom: 10px;
     margin-top: 0px;
@@ -2625,10 +2577,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .associated-incidents-user-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2650,7 +2602,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     max-height: 14vh;
     user-select: none;
     display: flex;
-    background-color: var(--color-5);
+    background-color: #222831;
 }
 
 .associated-incidents-user-tag {
@@ -2709,7 +2661,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .associated-incidents-fine-input input {
@@ -2732,7 +2684,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     margin-bottom: 15px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .associated-incidents-sentence-input input {
@@ -2755,7 +2707,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .icidents-person-search-container {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 95vh;
     height: 45vh;
     margin: auto;
@@ -2766,10 +2718,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .icidents-person-search-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
     font-size: 20px;
-    font-weight: bolder;
+    
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -2821,7 +2773,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .icidents-person-search-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .icidents-person-search-item-pfp {
@@ -2863,7 +2815,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     font-size: 16px;
     text-align: left;
     padding-bottom: 2.5px;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
     user-select: none;
 }
 
@@ -2887,12 +2839,12 @@ span.civilians-incident-input[contenteditable]:empty::before {
     font-size: 16px;
     text-align: left;
     padding-bottom: 2.5px;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .bolos-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -2902,10 +2854,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bolos-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -2918,11 +2870,11 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bolos-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .bolos-search-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -2962,7 +2914,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bolos-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     height: 5.5vh;
     margin: auto;
@@ -2974,8 +2926,8 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -2987,10 +2939,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -3006,10 +2958,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-title-tag {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -3023,7 +2975,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 
@@ -3035,7 +2987,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     padding-top: 5px;
     padding-bottom: 5px;
     align-items: center;
-    background-color: var(--color-4);
+    background-color: #30475e;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -3047,7 +2999,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-create:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-bolos-input-tag {
@@ -3070,7 +3022,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-bolos-input-title input {
@@ -3093,7 +3045,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-bolos-input-plate input {
@@ -3116,7 +3068,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-bolos-input-owner input {
@@ -3139,7 +3091,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-bolos-input-individual input {
@@ -3159,7 +3111,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     font-weight: lighter;
     padding-top: 7px;
     padding-bottom: 7px;
-    background-color: #1b8f25;
+    background-color: #4caf50;
     margin: auto;
     margin-left: 0px;
     margin-top: 10px;
@@ -3203,7 +3155,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
     outline: none;
     height: 100%;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -3222,9 +3174,9 @@ span.civilians-incident-input[contenteditable]:empty::before {
 .manage-bolos-tags-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     max-height: 150px;
     overflow: scroll;
 }
@@ -3232,9 +3184,9 @@ span.civilians-incident-input[contenteditable]:empty::before {
 .manage-bolos-gallery-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     height: 18vh;
     overflow: scroll;
@@ -3257,10 +3209,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .officers-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -3272,22 +3224,22 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .officers-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-officers-tags-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     max-height: 150px;
     margin-top: 10px;
     overflow: scroll;
 }
 
 .bolo-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     margin: auto;
     margin-bottom: 10px;
@@ -3298,7 +3250,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bolo-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .bolo-top-holder {
@@ -3373,10 +3325,10 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bolos-search-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 0px;
     text-align: center;
@@ -3391,14 +3343,14 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .bolos-search-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-bolos-tags-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -3410,7 +3362,7 @@ span.civilians-incident-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-tags-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 span.tag-bolo-input[contenteditable]:empty::before {
@@ -3464,10 +3416,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .bolo-gallery-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -3479,11 +3431,11 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .bolo-gallery-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .bolo-gallery-upload-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -3528,7 +3480,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-bolos-editing-title {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
     font-size: 15px;
     font-weight: lighter;
@@ -3546,8 +3498,8 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -3565,8 +3517,8 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .dispatch-comms-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 45.5%;
@@ -3576,10 +3528,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -3592,11 +3544,11 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .reports-search-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -3829,10 +3781,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-search-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 0px;
     text-align: center;
@@ -3847,12 +3799,12 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-search-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-reports-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -3864,10 +3816,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -3883,10 +3835,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-title-tag {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -3900,7 +3852,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 
@@ -3912,7 +3864,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     padding-top: 5px;
     padding-bottom: 5px;
     align-items: center;
-    background-color: var(--color-4);
+    background-color: #30475e;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -3924,7 +3876,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-create:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .manage-reports-input-tag {
@@ -3947,7 +3899,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-reports-input-title input {
@@ -3970,7 +3922,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-reports-input-type input {
@@ -3993,7 +3945,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-reports-input-owner input {
@@ -4016,7 +3968,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     margin-bottom: 0px;
     align-items: center;
     display: flex;
-    border-bottom: 2px solid var(--color-3);
+    border-bottom: 2px solid #30475e;
 }
 
 .manage-reports-input-individual input {
@@ -4036,7 +3988,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     font-weight: lighter;
     padding-top: 7px;
     padding-bottom: 7px;
-    background-color: #1b8f25;
+    background-color: #4caf50;
     margin: auto;
     margin-left: 0px;
     margin-top: 10px;
@@ -4090,7 +4042,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-editing-title {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
     font-size: 15px;
     font-weight: lighter;
@@ -4117,7 +4069,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
     outline: none;
     height: 100%;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -4136,9 +4088,9 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 .manage-reports-tags-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     max-height: 150px;
     overflow: scroll;
 }
@@ -4146,9 +4098,9 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 .manage-reports-gallery-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     margin-top: 10px;
     height: 18vh;
     overflow: scroll;
@@ -4171,10 +4123,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-officers-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -4186,25 +4138,25 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-officers-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .reports-officers-tags-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     max-height: 150px;
     margin-top: 10px;
     overflow: scroll;
 }
 
 .reports-gallery-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -4216,11 +4168,11 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-gallery-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .reports-gallery-upload-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -4265,10 +4217,10 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-tags-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -4280,25 +4232,25 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .manage-reports-tags-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .reports-civilians-tags-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 100%;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     max-height: 150px;
     margin-top: 10px;
     overflow: scroll;
 }
 
 .reports-civilians-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7px;
     padding-bottom: 7px;
     margin: auto;
@@ -4310,7 +4262,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-civilians-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .reports-civilians-tags-holder {
@@ -4322,7 +4274,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     margin: auto;
     margin-bottom: 10px;
@@ -4333,7 +4285,7 @@ span.officer-tag-bolo-input[contenteditable]:empty::before {
 }
 
 .reports-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .reports-top-holder {
@@ -4467,8 +4419,8 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dmv-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -4498,10 +4450,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dmv-search-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -4514,11 +4466,11 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dmv-search-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .dmv-search-input {
-    background-color: var(--color-3);
+    background-color: #30475e;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -4558,8 +4510,8 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .vehicle-information-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -4575,7 +4527,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     font-weight: lighter;
     padding-top: 7px;
     padding-bottom: 7px;
-    background-color: #1b8f25;
+    background-color: #4caf50;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -4595,10 +4547,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .vehicle-information-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 0px;
     text-align: center;
@@ -4613,7 +4565,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dmv-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     height: 9vh;
     margin: auto;
@@ -4625,7 +4577,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dmv-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .dmv-image {
@@ -4662,7 +4614,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     border-radius: 10px;
     color: white;
     font-size: 12px;
-    font-weight: bolder;
+    
     background-color: #956E09;
 }
 
@@ -4795,7 +4747,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .vehicle-info-line {
-    background-color: var(--color-3);
+    background-color: #30475e;
     height: 2px;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -4804,10 +4756,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .vehicle-info-tags-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-3);
+    border: 2px solid #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     margin: auto;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -4818,10 +4770,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .vehicle-info-tags-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -4834,14 +4786,14 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .vehicle-info-tags-add-btn:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .vehicle-info-tags-add-btn {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 7.25px;
     padding-bottom: 7.25px;
     margin: auto;
@@ -4891,7 +4843,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     outline: none;
     min-height: 26.9vh;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -4926,8 +4878,8 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .stafflogs-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -5036,19 +4988,19 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .tan-color { background-color: #c3b492; }
 
 .reports-remove-image:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .bolo-remove-image:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .bolo-delete:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .remove-bulletin:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .search-vehicle:hover {
@@ -5056,19 +5008,19 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .mark-code-5:hover {
-    background-color: #0B9509;
+    background-color: #4caf50;
 }
 
 .remove-code-5:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .mark-stolen:hover {
-    background-color: #0B9509;
+    background-color: #4caf50;
 }
 
 .remove-stolen:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .toggle-duty:hover {
@@ -5076,7 +5028,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .set-callsign:hover {
-    background-color: #0B9509;
+    background-color: #4caf50;
 }
 
 .set-radio:hover {
@@ -5100,7 +5052,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .incidents-charges-table-container {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 155vh;
     height: 85vh;
     margin: auto;
@@ -5113,13 +5065,13 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .incidents-charges-title-container {
     width: 95%;
     height: 11vh;
-    background-color: var(--color-4);
+    background-color: #30475e;
     margin: auto;
     margin-top: 1.5vh;
     margin-bottom: 0vh;
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--color-4);
+    border: 2px solid #30475e;
 }
 
 .incidents-charges-title {
@@ -5128,7 +5080,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     text-align: center;
     align-items: center;
     font-size: 22px;
-    font-weight: bolder;
+    
     margin-top: 1vh;
 }
 
@@ -5140,7 +5092,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .incidents-charges-title-description {
     color: white;
     margin: auto;
-    background-color: var(--color-5);
+    background-color: #222831;
     text-align: left;
     font-size: 17px;
     padding: .5vh;
@@ -5149,7 +5101,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .manage-incidents-editing-title {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
     font-size: 15px;
     font-weight: lighter;
@@ -5169,7 +5121,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 
 .current-charges-container {
     width: 95%;
-    border: 2px solid var(--color-4);
+    border: 2px solid #30475e;
     margin: auto;
     margin-top: 1.5vh;
     margin-bottom: 0vh;
@@ -5177,7 +5129,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .current-charges-inner-container {
-    background-color: var(--color-4);
+    background-color: #30475e;
     width: 35vh;
     height: fit-content;
     margin: auto;
@@ -5190,7 +5142,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .current-charges-title {
     color: white;
     font-size: 19px;
-    font-weight: bolder;
+    
     padding: .25vh;
     padding-left: 6vh;
     padding-right: 6vh;
@@ -5230,29 +5182,29 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .offenses-title-container {
     width: fit-content;
     height: fit-content;
-    background-color: var(--color-4);
+    background-color: #30475e;
     margin-left: 3.75vh;
     margin-top: 1.5vh;
     margin-bottom: 0vh;
     display: flex;
-    border: 2px solid var(--color-4);
+    border: 2px solid #30475e;
 }
 
 .offenses-title {
     color: white;
     padding: .7vh;
     padding-right: 3vh;
-    font-weight: bolder;
+    
     font-size: 1.4vh;
 }
 
 .offenses-prepend-holder {
     width: 95%;
-    background-color: var(--color-4);
+    background-color: #30475e;
     margin: auto;
     margin-top: 1.5vh;
     margin-bottom: 0vh;
-    border: 2px solid var(--color-4);
+    border: 2px solid #30475e;
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto auto auto auto;
@@ -5261,7 +5213,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .offense-item {
-    background-color: #0B9509;
+    background-color: #4caf50;
     border: 1.5px solid black;
     height: 5.0vh;
     margin: .5vh;
@@ -5338,7 +5290,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .radio-inner-container {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 30vh;
     height: 17.5vh;
     margin: auto;
@@ -5399,7 +5351,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     padding: .5vh;
     padding-left: 1vh;
     padding-right: 1vh;
-    background-color: #0B9509;
+    background-color: #4caf50;
     border-radius: 1vh;
     margin: auto;
     user-select: none;
@@ -5410,7 +5362,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .callsign-inner-container {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 30vh;
     height: 17.5vh;
     margin: auto;
@@ -5471,7 +5423,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     padding: .5vh;
     padding-left: 1vh;
     padding-right: 1vh;
-    background-color: #0B9509;
+    background-color: #4caf50;
     border-radius: 1vh;
     margin: auto;
     user-select: none;
@@ -5485,7 +5437,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 /* Keep At Bottom */
 
 .red-tag {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .orange-tag {
@@ -5493,7 +5445,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .green-tag {
-    background-color: #0B9509;
+    background-color: #4caf50;
 }
 
 .white-tag {
@@ -5522,11 +5474,11 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .green-penal-code {
-    background-color: #0B9509;
+    background-color: #4caf50;
 }
 
 .red-penal-code {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .header-pin {
@@ -5554,11 +5506,11 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .call-detach:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .remove-blip:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .dispatch-attached-units {
@@ -5569,15 +5521,15 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .active-unit-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .active-calls-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .dispatch-attached-units-container {
-    background-color: var(--color-1);
+    background-color: #1E3955;
     width: 92vh;
     height: 46vh;
     margin: auto;
@@ -5590,10 +5542,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dispatch-attached-units-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
     font-size: 20px;
-    font-weight: bolder;
+    
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -5618,7 +5570,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 .dispatch-attached-unit-item {
     padding: 10px;
     height: 3vh;
-    background-color: var(--color-5);
+    background-color: #222831;
     display: flex;
     align-items: center;
     margin-bottom: 5px;
@@ -5633,14 +5585,14 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .call-dispatch-detach:hover {
-    background-color: #950909;
+    background-color: #f44336;
 }
 
 .incidents-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 0px;
     text-align: center;
@@ -5655,7 +5607,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .incidents-title:hover {
-    background-color: var(--color-3);
+    background-color: #222831;
 }
 
 .incidents-search-refresh {
@@ -5687,7 +5639,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .respond-calls-container {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 70vh;
     min-height: 30vh;
     max-height: 40vh;
@@ -5699,10 +5651,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .respond-calls-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
     font-size: 20px;
-    font-weight: bolder;
+    
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -5748,7 +5700,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 
 .offenses-search-area {
     width: 95%;
-    border: 2px solid var(--color-4);
+    border: 2px solid #30475e;
     height: 3vh;
     margin: 1.5vh auto 0vh;
     display: flex;
@@ -5779,7 +5731,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 
     width: 750px;
     height: 375px;
-    background: var(--color-5);
+    background: #222831;
     border: 1px solid white;
 }
 
@@ -5843,7 +5795,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     padding: .5vh;
     padding-left: 1vh;
     padding-right: 1vh;
-    background-color: #0B9509;
+    background-color: #4caf50;
     border-radius: 1vh;
     margin: auto;
     user-select: none;
@@ -5871,14 +5823,14 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .dispatch-reply:hover {
-    background-color: var(--color-1);
+    background-color: #1E3955;
 }
 .display_hidden{
     display: none;
 }
 
 .cams-page-container {
-    background-color: var(--color-9);
+    background-image: url("https://cdn.discordapp.com/attachments/982642703181434880/1042904902092992582/backdoor2.png");
     border-radius: 15px;
     position: absolute; 
     width: 96.5%;
@@ -5890,8 +5842,8 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .cams-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -5914,7 +5866,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .cams-items {
-    background-color: var(--color-5);
+    background-color: #222831;
     height: auto; 
     padding: 10px;
     text-align: center;
@@ -5934,12 +5886,12 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .cams-items:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .weapons-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -5949,10 +5901,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapons-search-title {
-    background-color: var(--color-4);
+    background-color: #222831;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -5965,11 +5917,11 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapons-search-title:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .weapons-search-input {
-    background-color: var(--color-3);
+    background-color: #222831;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -6009,8 +5961,8 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapon-information-container {
-    background-color: var(--color-1);
-    border: 2px solid var(--color-3);
+    background-color: #1E3955;
+    border: 2px solid #30475e;
     display: flex;
     flex-direction: column;
     height: 74.7vh;
@@ -6047,7 +5999,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     font-weight: lighter;
     padding-top: 7px;
     padding-bottom: 7px;
-    background-color: #1b8f25;
+    background-color: #4caf50;
     margin: auto;
     margin-left: 5px;
     margin-top: 10px;
@@ -6063,10 +6015,10 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapon-information-title {
-    background-color: var(--color-4);
+    background-color: #30475e;
     color: white;
-    font-size: 18px;
-    font-weight: bolder;
+    font-size: 18.75px;
+    
     padding-top: 5px;
     padding-bottom: 0px;
     text-align: center;
@@ -6144,7 +6096,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapon-info-line {
-    background-color: var(--color-3);
+    background-color: #30475e;
     height: 2px;
     margin-left: 10px;
     margin-bottom: 10px;
@@ -6230,7 +6182,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
     outline: none;
     min-height: 30.9vh;
     resize: none;
-    background-color: var(--color-5);
+    background-color: #222831;
     color: white;
     font-size: 16px;
     padding: 10px;
@@ -6271,7 +6223,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapons-item {
-    background-color: var(--color-5);
+    background-color: #222831;
     width: 100%;
     height: 9vh;
     margin: auto;
@@ -6283,7 +6235,7 @@ span.civilian-tag-reports-input[contenteditable]:empty::before {
 }
 
 .weapons-item:hover {
-    background-color: var(--color-3);
+    background-color: #30475e;
 }
 
 .weapons-image {
@@ -6345,8 +6297,8 @@ input[type="range"].vehicle-info-points-input::-moz-range-track {
     width: fit-content;
     padding: 2px;
     margin: 0;
-    border: 1px solid var(--color-3);
-    background: var(--color-5);
+    border: 1px solid #30475e;
+    background: #222831;
     z-index: 100;
     border-radius: 3px;
     box-shadow: 1px 1px 4px rgba(0,0,0,.2);
