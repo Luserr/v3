@@ -1125,8 +1125,8 @@ function handleDragDrop() {
                         if (
                             fromDataWeight.amount != toAmount && fromDataWeight.type != "weapon"
                         ) {
-                            //toQuality.quality = fromDataWeight.info.quality.slice(0, toAmount);
-                           // fromQuality.quality = fromDataWeight.info.quality.slice(toAmount, fromDataWeight.info.quality.length);
+                            toQuality.quality = fromDataWeight.info.quality.slice(0, toAmount);
+                            fromQuality.quality = fromDataWeight.info.quality.slice(toAmount, fromDataWeight.info.quality.length);
                         }
                     }
                     if (
