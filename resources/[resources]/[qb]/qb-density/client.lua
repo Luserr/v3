@@ -38,7 +38,7 @@ AddEventHandler("popdensity:setMultipliers", function(multipliers)
 	densityMultipliers = multipliers
 end)
 
-Citizen.CreateThread(function()
+--[[ Citizen.CreateThread(function()
 	TriggerServerEvent("popdensity:sync")
 
 	while true do
@@ -63,3 +63,4 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 	end
 end)
+ ]]
