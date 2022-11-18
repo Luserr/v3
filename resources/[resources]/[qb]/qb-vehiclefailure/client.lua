@@ -405,7 +405,36 @@ CreateThread(function()
 			EndTextCommandSetBlipName(item.blip)
 		end
 	end
-end)
+end) 
+
+--[[ 
+local timer = 50
+
+Citizen.CreateThread(function()
+	while true do 
+		Citizen.Wait(50)
+		ped = PlayerPedId()
+		vehicle = GetVehiclePedIsIn(ped, false)
+		if isPedDrivingAVehicle() then
+			if GetVehicleEngineHealth(vehicle) <= 1000 then
+			local engine = GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, "engine"))
+				RequestNamedPtfxAsset("scr_ie_vv")
+				while not HasNamedPtfxAssetLoaded("scr_ie_vv") do
+					Citizen.Wait(1)
+				end 
+				SetPtfxAssetNextCall("scr_ie_vv")
+				local effect = StartParticleFxLoopedAtCoord("scr_ie_vv_vehicle_damage", engine.x-0.2, engine.y+0.3, engine.z-0.3, 0.0, 0.0, 0.0, 1.75, false, false, false, false)
+				timer = timer-1
+				
+				print(timer)
+				if timer == 0 then
+					StopParticleFxLooped(effect, 0)
+					timer = 50
+				end
+			end
+		end
+	end		
+end) ]]
 
 if cfg.torqueMultiplierEnabled or cfg.preventVehicleFlip or cfg.limpMode then
 	CreateThread(function()
@@ -532,6 +561,14 @@ CreateThread(function()
 
 			if healthEngineCurrent <= cfg.engineSafeGuard+1 and cfg.limpMode == false then
 				local vehpos = GetEntityCoords(vehicle)
+				--[[ local engine = GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, "engine"))
+				RequestNamedPtfxAsset("scr_ie_vv")
+				while not HasNamedPtfxAssetLoaded("scr_ie_vv") do
+					Citizen.Wait(1)
+				end 
+				SetPtfxAssetNextCall("scr_ie_vv")
+				StartParticleFxLoopedAtCoord("scr_ie_vv_vehicle_damage", engine.x-0.2, engine.y+0.3, engine.z-0.3, 0.0, 0.0, 0.0, 1.75, false, false, false, false)
+				 ]]
 				StartParticleFxLoopedAtCoord("ent_ray_heli_aprtmnt_l_fire", vehpos.x, vehpos.y, vehpos.z-0.7, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
 				SetVehicleUndriveable(vehicle,true)
 			end
