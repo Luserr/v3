@@ -16,7 +16,7 @@ Citizen.CreateThread(function()
 			end
 		else
 		    if check == true then
-		        SetFollowVehicleCamViewMode(1)
+		        SetFollowVehicleCamViewMode(0)
 				check = false
 			end
 		end
