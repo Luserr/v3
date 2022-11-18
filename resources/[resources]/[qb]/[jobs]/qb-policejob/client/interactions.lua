@@ -703,7 +703,7 @@ RegisterNetEvent("qb-policejob:client:scanPlateForward", function()
             Cooldown = false
         end)
     else
-        QBCore.Functions.Notify("Не толкова бързо!", "error")
+        QBCore.Functions.Notify("Not so fast!", "error")
     end
 end)
 
