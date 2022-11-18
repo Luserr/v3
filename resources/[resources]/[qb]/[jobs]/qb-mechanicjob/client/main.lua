@@ -971,10 +971,10 @@ CreateThread(function() -- Not event sure what this is even for
                 SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fSteeringLock', fSteeringLock)
         
                 if IsThisModelABike(GetEntityModel(vehicleIdentifier)) then
-                    setVehicleHandling(vehicleIdentifier, 'fTractionCurveMin', 0.6)
-                    setVehicleHandling(vehicleIdentifier, 'fTractionCurveMax', 0.6)
-                    setVehicleHandling(vehicleIdentifier, 'fInitialDriveForce', 2.2)
-                    setVehicleHandling(vehicleIdentifier, 'fBrakeForce', 1.4)
+                    --SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData','fTractionCurveMin', 0.6)
+                    --SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fTractionCurveMax', 0.6)
+                    --SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fInitialDriveForce', 2.2)
+                    --SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fBrakeForce', 1.4)
                     SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fSuspensionReboundDamp', 5.000000) 
                     SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fSuspensionCompDamp', 5.000000)
                     SetVehicleHandlingFloat(vehicleIdentifier, 'CHandlingData', 'fSuspensionForce', 22.000000)
