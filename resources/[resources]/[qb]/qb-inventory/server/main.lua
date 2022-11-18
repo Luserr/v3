@@ -876,7 +876,7 @@ local function RemoveFromGlovebox(plate, slot, itemName, amount)
 	end
 end
 
---[[local function AddToDrop(dropId, slot, itemName, amount, info, created)
+local function AddToDrop(dropId, slot, itemName, amount, info, created)
 	amount = tonumber(amount) or 1
 	Drops[dropId].createdTime = os.time()
 	if Drops[dropId].items[slot] and Drops[dropId].items[slot].name == itemName then
@@ -896,36 +896,6 @@ end
 			image = itemInfo["image"],
 			slot = slot,
 			created = created,
-			id = dropId,
-		}
-	end
-end]]--
-
----Add an item to a drop
----@param dropId integer The id of the drop
----@param slot number The slot of the drop inventory to add the item to
----@param itemName string Name of the item to add
----@param amount? number The amount of the item to add
----@param info? table Extra info to add to the item
-local function AddToDrop(dropId, slot, itemName, amount, info)
-	amount = tonumber(amount) or 1
-	Drops[dropId].createdTime = os.time()
-	if Drops[dropId].items[slot] and Drops[dropId].items[slot].name == itemName then
-		Drops[dropId].items[slot].amount = Drops[dropId].items[slot].amount + amount
-	else
-		local itemInfo = QBCore.Shared.Items[itemName:lower()]
-		Drops[dropId].items[slot] = {
-			name = itemInfo["name"],
-			amount = amount,
-			info = info or "",
-			label = itemInfo["label"],
-			description = itemInfo["description"] or "",
-			weight = itemInfo["weight"],
-			type = itemInfo["type"],
-			unique = itemInfo["unique"],
-			useable = itemInfo["useable"],
-			image = itemInfo["image"],
-			slot = slot,
 			id = dropId,
 		}
 	end
@@ -1629,12 +1599,20 @@ RegisterNetEvent('inventory:server:UseItem', function(inventory, item)
 	if not itemData then return end
 	local itemInfo = QBCore.Shared.Items[itemData.name]
 	if itemData.type == "weapon" then
-
 		TriggerClientEvent("inventory:client:UseWeapon", src, itemData, itemData.info.quality and itemData.info.quality > 0)
 		TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "use")
 	else
-		UseItem(itemData.name, src, itemData)
-		TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "use")
+		if itemData.info.quality then
+			if itemData.info.quality[1] > 0 then
+				UseItem(itemData.name, src, itemData)
+				TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "use")
+			else
+				TriggerClientEvent("QBCore:Notify", src, "You can't use this item", "error")
+			end
+		else
+			UseItem(itemData.name, src, itemData)
+			TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "use")
+		end
 	end
 end)
 
