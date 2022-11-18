@@ -61,7 +61,7 @@ function openInventory(type, data)
       success = getPDAuthCode()
     end
     if (not success) and data.cids then
-      local cid = exports["isPed"]:isPed("cid")
+      local cid = QBCore.Functions.GetPlayerData().citizenid
       success = data.cids[cid]
     end
     if success then
@@ -225,7 +225,7 @@ Citizen.CreateThread(function()
     distance = { radius = 2.5 },
     isEnabled = function(pEntity, pContext)
       local objInfo = exports["qpixel-objects"]:GetObjectByEntity(pEntity)
-      local cid = exports["isPed"]:isPed("cid")
+      local cid = QBCore.Functions.GetPlayerData().citizenid
       return objInfo ~= nil and IsEmployedAt("ace_industries") and HasPermission("ace_industries", "craft_access")
     end
   })

@@ -168,8 +168,11 @@ end
 exports('createLog',createLog)
 
 RPC.register("IsEmployedAt", function(pSource, pBusinessId)
-    local user = exports["qpixel-base"]:getModule("Player"):GetUser(pSource)
-    local char = user:getCurrentCharacter()
+    local src = pSource
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local characterId = xPlayer.PlayerData.cid
+    local citizenid = xPlayer.PlayerData.citizenid
+
     local data = Await(SQL.execute("SELECT * FROM businesses WHERE business_id = @business_id", {
         ["business_id"] = pBusinessId
     }))
@@ -177,7 +180,7 @@ RPC.register("IsEmployedAt", function(pSource, pBusinessId)
 
     local employees = json.decode(data[1].employees) or {}
     for i,u in pairs(employees) do
-        if tonumber(u.cid) == tonumber(char.id) then
+        if tonumber(u.characterId) == tonumber(citizenid) then
             return true
         end
     end

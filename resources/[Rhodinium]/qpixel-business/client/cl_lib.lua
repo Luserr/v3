@@ -1,8 +1,10 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 local EmployedAt, UpdatedAt = {}, 0
 local PermissionCache = {}
 
 function RefreshEmploymentList()
-    local characterId = exports['isPed']:isPed('cid')
+    local characterId = QBCore.Functions.GetPlayerData().citizenid
     local employment = RPC.execute("GetEmploymentInformation", characterId)
     EmployedAt, UpdatedAt = {}, GetGameTimer()
     for _, business in ipairs(employment) do
@@ -28,7 +30,7 @@ function HasPermission(pBusiness, pPermission)
         PermissionCache[pBusiness] = {}
     end
     if not PermissionCache[pBusiness][pPermission] or (GetGameTimer() - PermissionCache[pBusiness][pPermission].UpdatedAt) > 15 * 60000 then
-        local cid = exports["isPed"]:isPed("cid")
+        local cid = QBCore.Functions.GetPlayerData().citizenid
         local success = RPC.execute("qpixel-business:hasPermission", pBusiness, pPermission, cid)
         PermissionCache[pBusiness][pPermission] = {
             UpdatedAt = GetGameTimer(),

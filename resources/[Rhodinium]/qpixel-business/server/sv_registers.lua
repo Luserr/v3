@@ -50,34 +50,36 @@ function dump(o)
 	   return s .. '} '
 	else
 	   return tostring(o)
-	end
+	end 
  end
 
 RPC.register("qpixel-business:completePurchase", function(pSource, pData)
     -- here we need to grab tax amount, and add to state account
-    local user = exports["qpixel-base"]:getModule("Player"):GetUser(pSource)
-    local char = user:getCurrentCharacter()
-    local data = pData
+    local src = pSource
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local characterId = xPlayer.PlayerData.cid
+    local citizenid = xPlayer.PlayerData.citizenid
+
+    local data = pData 
     local amount = data.cost
     local tax = data.tax -- tax amount taken, and added to the state account
 
     local getInfoByCID = Await(SQL.execute("SELECT cash, bank FROM characters WHERE id = @id", {
-        ["id"] = char.id
+        ["id"] = citizenid
     }))
 
     if data.cash == true then
         if not (tonumber(getInfoByCID[1].cash) > tonumber(amount)) then return false, "You can't afford this purchase" end
-        user:removeMoney(tonumber(amount))
+        xPlayer.Functions.RemoveMoney('cash', tonumber(amount))
     else
         if not (tonumber(getInfoByCID[1].bank) > tonumber(amount)) then return false, "You can't afford this purchase" end
-        user:removeBank(tonumber(amount))
+        xPlayer.Functions.RemoveMoney('bank', tonumber(amount))
     end
 
-    local owner = exports["qpixel-base"]:getModule("Player"):GetUser(data.charger)
-    local char = owner:getCurrentCharacter()
+    local char = QBCore.Functions.GetPlayer(data.charger) 
     information = {
         ["Price"] = tonumber(amount),
-        ["Creator"] = char.first_name .. " " ..char.last_name,
+        ["Creator"] = char.PlayerData.charinfo.firstname .. " " ..char.PlayerData.charinfo.lastname, 
         ["Comment"] = data.comment
     }
     TriggerClientEvent("player:receiveItem", data.charger, "ownerreceipt", 1, true, information)
@@ -124,7 +126,7 @@ RPC.register("qpixel-business:completePurchase", function(pSource, pData)
     exports.oxmysql:execute("INSERT INTO bank_transactions (identifier, sender, target, label, amount, iden, type, date, business_id, transaction_id) VALUES (@identifier, @sender, @target, @label, @amount, @iden, @type, @date, @business_id, @transaction_id)", {
         ["identifier"] = 0,
         ["sender"] = businessname,
-        ["target"] = char.first_name .. " " .. char.last_name, -- change to biz name,
+        ["target"] = char.PlayerData.charinfo.firstname .. " " .. char.PlayerData.charinfo.lastname, -- change to biz name,
         ["label"] = data.comment,
         ["amount"] = amount,
         ["iden"] = "PURCHASE",
@@ -137,7 +139,7 @@ RPC.register("qpixel-business:completePurchase", function(pSource, pData)
 
     exports.oxmysql:execute("INSERT INTO bank_transactions (identifier, sender, target, label, amount, iden, type, date, transaction_id) VALUES (@identifier, @sender, @target, @label, @amount, @iden, @type, @date, @transaction_id)", {
         ["identifier"] = char.id,
-        ["sender"] = char.first_name .. " " .. char.last_name,
+        ["sender"] = char.PlayerData.charinfo.firstname .. " " .. char.PlayerData.charinfo.lastname,
         ["target"] = businessname,
         ["label"] = data.comment, 
         ["amount"] = amount,
