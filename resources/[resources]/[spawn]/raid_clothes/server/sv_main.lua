@@ -398,42 +398,46 @@ RegisterServerEvent("raid_clothes:set_outfitVeh", function(slot, name, data, pPl
         ['@slot'] = slot,
         ['@citizenid'] = citizenid
     }, function(result)
-        if result and result[1] then
-            local values = {
-                ["@cid"] = characterId,
-                ["@plate"] = pPlate,
-                ["@slot"] = slot,
-                ["@name"] = name,
-                ["@model"] = json.encode(data.model),
-                ["@drawables"] = json.encode(data.drawables),
-                ["@props"] = json.encode(data.props),
-                ["@drawtextures"] = json.encode(data.drawtextures),
-                ["@proptextures"] = json.encode(data.proptextures),
-                ["@hairColor"] = json.encode(data.hairColor),
-            }
+        if slot <= 3 then
+            if result and result[1] then
+                local values = {
+                    ["@cid"] = characterId,
+                    ["@plate"] = pPlate,
+                    ["@slot"] = slot,
+                    ["@name"] = name,
+                    ["@model"] = json.encode(data.model),
+                    ["@drawables"] = json.encode(data.drawables),
+                    ["@props"] = json.encode(data.props),
+                    ["@drawtextures"] = json.encode(data.drawtextures),
+                    ["@proptextures"] = json.encode(data.proptextures),
+                    ["@hairColor"] = json.encode(data.hairColor),
+                }
 
-            local set = "model = @model,name = @name,drawables = @drawables,props = @props,drawtextures = @drawtextures,proptextures = @proptextures,hairColor = @hairColor"
-            MySQL.Async.execute("UPDATE vehicle_outfits SET "..set.." WHERE slot = @slot and plate = @plate", values)
+                local set = "model = @model,name = @name,drawables = @drawables,props = @props,drawtextures = @drawtextures,proptextures = @proptextures,hairColor = @hairColor"
+                MySQL.Async.execute("UPDATE vehicle_outfits SET "..set.." WHERE slot = @slot and plate = @plate", values)
+            else
+                local cols = "plate, cid, model, name, slot, drawables, props, drawtextures, proptextures, hairColor"
+                local vals = "@plate, @cid, @model, @name, @slot, @drawables, @props, @drawtextures, @proptextures, @hairColor"
+
+                local values = {
+                    ["@plate"] = pPlate,
+                    ['@cid'] = characterId,
+                    ["@name"] = name,
+                    ["@slot"] = slot,
+                    ["@model"] = data.model,
+                    ["@drawables"] = json.encode(data.drawables),
+                    ["@props"] = json.encode(data.props),
+                    ["@drawtextures"] = json.encode(data.drawtextures),
+                    ["@proptextures"] = json.encode(data.proptextures),
+                    ["@hairColor"] = json.encode(data.hairColor)
+                }
+
+                MySQL.Async.execute("INSERT INTO vehicle_outfits ("..cols..") VALUES ("..vals..")", values, function()
+                    TriggerClientEvent("QBCore:Notify", src, "Outfit ".. name .. " stored in slot " .. slot)
+                end)
+            end
         else
-            local cols = "plate, cid, model, name, slot, drawables, props, drawtextures, proptextures, hairColor"
-            local vals = "@plate, @cid, @model, @name, @slot, @drawables, @props, @drawtextures, @proptextures, @hairColor"
-
-            local values = {
-                ["@plate"] = pPlate,
-                ['@cid'] = characterId,
-                ["@name"] = name,
-                ["@slot"] = slot,
-                ["@model"] = data.model,
-                ["@drawables"] = json.encode(data.drawables),
-                ["@props"] = json.encode(data.props),
-                ["@drawtextures"] = json.encode(data.drawtextures),
-                ["@proptextures"] = json.encode(data.proptextures),
-                ["@hairColor"] = json.encode(data.hairColor)
-            }
-
-            MySQL.Async.execute("INSERT INTO vehicle_outfits ("..cols..") VALUES ("..vals..")", values, function()
-                TriggerClientEvent("QBCore:Notify", src, "Outfit ".. name .. " stored in slot " .. slot)
-            end)
+            TriggerClientEvent("QBCore:Notify", src, "You can only store 3 outfits in your trunk!", "error")
         end
 	end)
 end)
