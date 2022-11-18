@@ -9,79 +9,89 @@ local keybindControls = {
 
 local MAX_MENU_ITEMS = 10
 
-RegisterCommand('xyaunfunf', function()
-    showMenu = true
-    local enabledMenus = {}
-    for _, menuConfig in ipairs(rootMenuConfig) do
-        if menuConfig:enableMenu() then
-            local dataElements = {}
-            local hasSubMenus = false
-            if menuConfig.subMenus ~= nil and #menuConfig.subMenus > 0 then
-                hasSubMenus = true
-                local previousMenu = dataElements
-                local currentElement = {}
-                for i = 1, #menuConfig.subMenus do
-                    -- if newSubMenus[menuConfig.subMenus[i]] ~= nil and newSubMenus[menuConfig.subMenus[i]].enableMenu ~= nil and not newSubMenus[menuConfig.subMenus[i]]:enableMenu() then
-                    --     goto continue
-                    -- end
-                    currentElement[#currentElement+1] = newSubMenus[menuConfig.subMenus[i]]
-                    currentElement[#currentElement].id = menuConfig.subMenus[i]
-                    currentElement[#currentElement].enableMenu = nil
+-- Main thread
+CreateThread(function()
+    local keyBind = "F1"
+    local keyBind2 = "-"
+    while true do
+        Wait(0)
+        SetBigmapActive(false, false)
+        if IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) and showMenu then
+            showMenu = false
+            SetNuiFocus(false, false)
+        end
+        if IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) then
+            showMenu = true
+            local enabledMenus = {}
+            for _, menuConfig in ipairs(rootMenuConfig) do
+                if menuConfig:enableMenu() then
+                    local dataElements = {}
+                    local hasSubMenus = false
+                    if menuConfig.subMenus ~= nil and #menuConfig.subMenus > 0 then
+                        hasSubMenus = true
+                        local previousMenu = dataElements
+                        local currentElement = {}
+                        for i = 1, #menuConfig.subMenus do
+                            -- if newSubMenus[menuConfig.subMenus[i]] ~= nil and newSubMenus[menuConfig.subMenus[i]].enableMenu ~= nil and not newSubMenus[menuConfig.subMenus[i]]:enableMenu() then
+                            --     goto continue
+                            -- end
+                            currentElement[#currentElement+1] = newSubMenus[menuConfig.subMenus[i]]
+                            currentElement[#currentElement].id = menuConfig.subMenus[i]
+                            currentElement[#currentElement].enableMenu = nil
 
-                    if i % MAX_MENU_ITEMS == 0 and i < (#menuConfig.subMenus - 1) then
-                        previousMenu[MAX_MENU_ITEMS + 1] = {
-                            id = "_more",
-                            title = "More",
-                            icon = "#more",
-                            items = currentElement
-                        }
-                        previousMenu = currentElement
-                        currentElement = {}
+                            if i % MAX_MENU_ITEMS == 0 and i < (#menuConfig.subMenus - 1) then
+                                previousMenu[MAX_MENU_ITEMS + 1] = {
+                                    id = "_more",
+                                    title = "More",
+                                    icon = "#more",
+                                    items = currentElement
+                                }
+                                previousMenu = currentElement
+                                currentElement = {}
+                            end
+                            --::continue::
+                        end
+                        if #currentElement > 0 then
+                            previousMenu[MAX_MENU_ITEMS + 1] = {
+                                id = "_more",
+                                title = "More",
+                                icon = "#more",
+                                items = currentElement
+                            }
+                        end
+                        dataElements = dataElements[MAX_MENU_ITEMS + 1].items
+
                     end
-                    --::continue::
-                end
-                if #currentElement > 0 then
-                    previousMenu[MAX_MENU_ITEMS + 1] = {
-                        id = "_more",
-                        title = "More",
-                        icon = "#more",
-                        items = currentElement
+                    enabledMenus[#enabledMenus+1] = {
+                        id = menuConfig.id,
+                        title = menuConfig.displayName,
+                        functionName = menuConfig.functionName,
+                        icon = menuConfig.icon,
                     }
+                    if hasSubMenus then
+                        enabledMenus[#enabledMenus].items = dataElements
+                    end
                 end
-                dataElements = dataElements[MAX_MENU_ITEMS + 1].items
+            end
+            SendNUIMessage({
+                state = "show",
+                resourceName = GetCurrentResourceName(),
+                data = enabledMenus,
+                menuKeyBind = keyBind
+            })
+            SetCursorLocation(0.5, 0.5)
+            SetNuiFocus(true, true)
 
-            end
-            enabledMenus[#enabledMenus+1] = {
-                id = menuConfig.id,
-                title = menuConfig.displayName,
-                functionName = menuConfig.functionName,
-                icon = menuConfig.icon,
-            }
-            if hasSubMenus then
-                enabledMenus[#enabledMenus].items = dataElements
-            end
+            -- Play sound
+            PlaySoundFrontend(-1, "NAV", "HUD_AMMO_SHOP_SOUNDSET", 1)
+
+
+            while showMenu == true do Wait(100) end
+            Wait(100)
+            while IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) do Wait(100) end
         end
     end
-    SendNUIMessage({
-        state = "show",
-        resourceName = GetCurrentResourceName(),
-        data = enabledMenus,
-        menuKeyBind = keyBind
-    })
-    SetCursorLocation(0.5, 0.5)
-    SetNuiFocus(true, true)
-
-    -- Play sound
-    PlaySoundFrontend(-1, "NAV", "HUD_AMMO_SHOP_SOUNDSET", 1)
-
-
-    while showMenu == true do Wait(100) end
-    Wait(100)
-    while IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) do Wait(100) end
-end, false)
-
-RegisterKeyMapping('xyaunfunf', 'Radial Menu', 'keyboard', 'f1')
-
+end)
 -- Callback function for closing menu
 RegisterNUICallback('closemenu', function(data, cb)
     -- Clear focus and destroy UI
