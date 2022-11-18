@@ -1411,6 +1411,36 @@ RegisterUICallback("qb-ui:raid_clothes:deleteOutfit", function(data, cb)
     TriggerEvent("raid_clothes:outfits")
 end)
 
+function GetNearestVehicleOutfit()
+    local vehicle = QBCore.Functions.GetClosestVehicle()  
+    local plate = GetVehicleNumberPlateText(vehicle)  
+    if vehicle ~= 0 and vehicle then
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped) 
+        local vehpos = GetEntityCoords(vehicle)
+        if #(pos - vehpos) < 5.0 and not IsPedInAnyVehicle(ped) then
+            return plate
+        end
+    end
+end
+
+RegisterUICallback("qb-ui:raid_clothes:changeOutfitVeh", function(data, cb)
+    cb({ data = {}, meta = { ok = true, message = 'done' } })
+    local plate = GetNearestVehicleOutfit()
+    TriggerServerEvent("raid_clothes:get_outfitVeh", data.key, plate)
+    TriggerEvent("backitems:displayItems", true)
+    Citizen.Wait(100)
+    TriggerEvent("raid_clothes:outfitsVeh")
+end)
+
+RegisterUICallback("qb-ui:raid_clothes:deleteOutfitVeh", function(data, cb)
+    cb({ data = {}, meta = { ok = true, message = 'done' } })
+    local plate = GetNearestVehicleOutfit()
+    TriggerServerEvent('raid_clothes:remove_outfitVeh', data.key, plate)
+    Citizen.Wait(100)
+    TriggerEvent("raid_clothes:outfitsVeh")
+end)
+
 RegisterNetEvent('raid_clothes:ListOutfits', function(skincheck)
     if inzone or exports['qb-apartments']:isInApt() then
         local menuData = {}
@@ -1462,7 +1492,7 @@ RegisterNetEvent('raid_clothes:ListOutfits', function(skincheck)
                 title = "Save Current Outfit",
                 description = '',
                 key = 1,
-                action = "qb-ui:raid_clothes:addOutfitPrompt"
+                action = "qb-ui:raid_clothes:addOutfitPrompt",
             }
             --exports["xz-menu"]:openMenu(menuData)
             exports['np-ui']:showContextMenu(menuData)
@@ -1471,6 +1501,104 @@ RegisterNetEvent('raid_clothes:ListOutfits', function(skincheck)
     else
         QBCore.Functions.Notify("You have to be near clothing shop or in apartment or house")
     end
+end)
+
+RegisterUICallback("qb-ui:raid_clothes:addOutfitVeh", function(data, cb)
+    cb({ data = {}, meta = { ok = true, message = '' } })
+    exports['np-ui']:closeApplication('textbox')
+
+    local outfitSlot = data[2].value
+    local outfitName = data[1].value
+    if outfitName == nil then outfitName = "" end
+    local plate = GetNearestVehicleOutfit()
+    TriggerServerEvent("raid_clothes:set_outfitVeh", outfitSlot, outfitName, GetCurrentPed(), plate)
+end)
+
+RegisterUICallback("qb-ui:raid_clothes:addOutfitPromptVehicle", function(data, cb)
+    cb({ data = {}, meta = { ok = true, message = 'done' } })
+    Wait(1) --wait to fix ui bug?
+    exports['np-ui']:openApplication('textbox', {
+        callbackUrl = 'qb-ui:raid_clothes:addOutfitVeh',
+        key = data.key,
+        items = {
+          {
+            icon = "pencil-alt",
+            label = "Outfit Name",
+            name = "outfitname",
+          },
+        },
+        show = true,
+    })
+end)
+
+RegisterNetEvent('rhodo-outfits:openOutfitMenu', function(skincheck, plate)
+    local menuData = {}
+    local takenSlots = {}
+    for i = 1, #skincheck do
+        local slot = tonumber(skincheck[i].slot)
+        takenSlots[slot] = true
+
+
+        menuData[1] = {
+            title = "<center><strong>Your Outfits</strong></center>",
+            description = '',
+            key = 1,
+            action = ""
+        }
+
+        menuData[#menuData + 1] = {
+            title = slot .. " | " .. skincheck[i].name,
+            description = '',
+            key = slot,
+            children = {
+                { 
+                    title = "Change Outfit", 
+                    action = "qb-ui:raid_clothes:changeOutfitVeh", 
+                    key = slot
+                },
+                { 
+                    title = "Delete Outfit", 
+                    action = "qb-ui:raid_clothes:deleteOutfitVeh", 
+                    key = slot, 
+                    plate = plate
+                },
+            }
+        }
+    end
+
+    if #menuData > 0 then
+        if #menuData < 20 then
+            --Find first empty slot
+            local emptySlot = -1
+            for i=1,20 do
+                if emptySlot == -1 and takenSlots[i] == nil then
+                    emptySlot = i
+                end
+            end
+            menuData[#menuData + 1] = {
+                title = "Save Current Outfit",
+                description = '',
+                key = emptySlot,
+                action = "qb-ui:raid_clothes:addOutfitPromptVehicle",
+                plate = plate
+            }
+        end
+        exports['np-ui']:showContextMenu(menuData)
+    else
+        menuData[1] = {
+            title = "Save Current Outfit",
+            description = '',
+            key = 1,
+            action = "qb-ui:raid_clothes:addOutfitPromptVehicle",
+            plate = plate
+        }
+        exports['np-ui']:showContextMenu(menuData)
+    end
+end)
+
+RegisterNetEvent('raid_clothes:outfitsVeh', function()
+    local plate = GetNearestVehicleOutfit()
+    TriggerServerEvent("raid_clothes:list_outfitsVeh", plate)
 end)
 
 RegisterNetEvent('raid_clothes:ListOutfits_boss', function(skincheck)

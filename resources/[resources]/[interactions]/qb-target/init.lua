@@ -843,6 +843,20 @@ Config.TargetBones = {
         },
         distance = 2.5
     },
+    ["outfitsyo"] = {
+        bones = {
+            "boot"
+        },
+        options = {
+            {
+                type = "client",
+                event = "raid_clothes:outfitsVeh",
+                icon = "fas fa-user-secret",
+                label = "Change Outfit", 
+            },
+        },
+        distance = 2.5
+    },
 }
 
 Config.TargetEntities = {

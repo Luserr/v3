@@ -202,7 +202,7 @@ RegisterServerEvent("raid_clothes:retrieve_tats", function(pSrc)
             })
 			TriggerClientEvent("raid_clothes:settattoos", src, {})
 		end
-	end)
+	end) 
 end)
 
 RegisterServerEvent("raid_clothes:set_tats", function(tattoosList)
@@ -331,6 +331,128 @@ RegisterServerEvent("raid_clothes:set_outfit", function(slot, name, data)
 	end)
 end)
 
+RegisterServerEvent("raid_clothes:get_outfitVeh", function(slot, pPlate)
+    if not slot then return end
+    local src = source
+
+    print(pPlate)
+
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local characterId = xPlayer.PlayerData.cid
+    local citizenid = xPlayer.PlayerData.citizenid
+
+    if not characterId then return end
+    
+    MySQL.Async.fetchAll("SELECT * FROM vehicle_outfits WHERE slot = @slot AND plate = @plate AND cid = @cid", {
+        ['@slot'] = slot,
+        ['@plate'] = pPlate,
+        ['@cid'] = characterId
+    }, function(result)
+        if result and result[1] then
+            if result[1].model == nil then
+                TriggerClientEvent("QBCore:Notify", src, "You can't use this")
+                return
+            end
+
+            local data = {
+                model = result[1].model,
+                drawables = json.decode(result[1].drawables),
+                props = json.decode(result[1].props),
+                drawtextures = json.decode(result[1].drawtextures),
+                proptextures = json.decode(result[1].proptextures),
+                hairColor = json.decode(result[1].hairColor)
+            }
+
+            TriggerClientEvent("raid_clothes:setclothes", src, data, 0)
+
+            local values = {
+                ['@citizenid'] = citizenid,
+                ["@cid"] = characterId,
+                ["@model"] = data.model,
+                ["@drawables"] = json.encode(data.drawables),
+                ["@props"] = json.encode(data.props),
+                ["@drawtextures"] = json.encode(data.drawtextures),
+                ["@proptextures"] = json.encode(data.proptextures),
+            }
+
+            local set = "model = @model, drawables = @drawables, props = @props,drawtextures = @drawtextures,proptextures = @proptextures, citizenid = @citizenid"
+            MySQL.Async.execute("UPDATE users_current SET "..set.." WHERE citizenid = @citizenid", values)
+        else
+            TriggerClientEvent("QBCore:Notify", src, "No outfit on slot " .. slot)
+        end
+	end)
+end)
+
+RegisterServerEvent("raid_clothes:set_outfitVeh", function(slot, name, data, pPlate)
+    print(pPlate)
+    if not slot then return end
+    local src = source
+
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local characterId = xPlayer.PlayerData.cid
+    local citizenid = xPlayer.PlayerData.citizenid
+
+    if not characterId then return end
+
+    MySQL.Async.fetchAll("SELECT slot FROM vehicle_outfits WHERE slot = @slot AND plate = @plate", {
+        ['@slot'] = slot,
+        ['@citizenid'] = citizenid
+    }, function(result)
+        if result and result[1] then
+            local values = {
+                ["@cid"] = characterId,
+                ["@plate"] = pPlate,
+                ["@slot"] = slot,
+                ["@name"] = name,
+                ["@model"] = json.encode(data.model),
+                ["@drawables"] = json.encode(data.drawables),
+                ["@props"] = json.encode(data.props),
+                ["@drawtextures"] = json.encode(data.drawtextures),
+                ["@proptextures"] = json.encode(data.proptextures),
+                ["@hairColor"] = json.encode(data.hairColor),
+            }
+
+            local set = "model = @model,name = @name,drawables = @drawables,props = @props,drawtextures = @drawtextures,proptextures = @proptextures,hairColor = @hairColor"
+            MySQL.Async.execute("UPDATE vehicle_outfits SET "..set.." WHERE slot = @slot and plate = @plate", values)
+        else
+            local cols = "plate, cid, model, name, slot, drawables, props, drawtextures, proptextures, hairColor"
+            local vals = "@plate, @cid, @model, @name, @slot, @drawables, @props, @drawtextures, @proptextures, @hairColor"
+
+            local values = {
+                ["@plate"] = pPlate,
+                ['@cid'] = characterId,
+                ["@name"] = name,
+                ["@slot"] = slot,
+                ["@model"] = data.model,
+                ["@drawables"] = json.encode(data.drawables),
+                ["@props"] = json.encode(data.props),
+                ["@drawtextures"] = json.encode(data.drawtextures),
+                ["@proptextures"] = json.encode(data.proptextures),
+                ["@hairColor"] = json.encode(data.hairColor)
+            }
+
+            MySQL.Async.execute("INSERT INTO vehicle_outfits ("..cols..") VALUES ("..vals..")", values, function()
+                TriggerClientEvent("QBCore:Notify", src, "Outfit ".. name .. " stored in slot " .. slot)
+            end)
+        end
+	end)
+end)
+
+RegisterServerEvent("raid_clothes:remove_outfitVeh",function(slot, pPlate)
+    local src = source
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local cid = xPlayer.PlayerData.cid
+    local citizenid = xPlayer.PlayerData.citizenid
+    local slot = slot
+
+    if not citizenid then return end
+    MySQL.Async.execute("DELETE FROM vehicle_outfits WHERE slot = @slot AND plate = @plate", {
+        ["slot"] = slot,
+        ['@plate'] = pPlate
+    })
+    TriggerClientEvent("notify", src,"Removed slot " .. slot .. ".",1)
+end)
+
 RegisterServerEvent("raid_clothes:remove_outfit",function(slot)
     local src = source
     local xPlayer = QBCore.Functions.GetPlayer(src)
@@ -351,7 +473,7 @@ RegisterServerEvent("raid_clothes:list_outfits", function()
     local xPlayer = QBCore.Functions.GetPlayer(src)
     local cid = xPlayer.PlayerData.cid
     local citizenid = xPlayer.PlayerData.citizenid 
-    local slot = slot
+    local slot = slot 
     local name = name
 
     if not citizenid then return end
@@ -360,6 +482,23 @@ RegisterServerEvent("raid_clothes:list_outfits", function()
         ['@citizenid'] = citizenid
     }, function(skincheck)
     	TriggerClientEvent("raid_clothes:ListOutfits",src, skincheck)
+	end)
+end)
+
+RegisterServerEvent("raid_clothes:list_outfitsVeh", function(pPlate)
+    local src = source
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local cid = xPlayer.PlayerData.cid
+    local citizenid = xPlayer.PlayerData.citizenid 
+    local slot = slot
+    local name = name
+
+    if not citizenid then return end
+
+    MySQL.Async.fetchAll("SELECT slot, name FROM vehicle_outfits WHERE plate = @plate", {
+        ['@plate'] = pPlate
+    }, function(skincheck)
+    	TriggerClientEvent("rhodo-outfits:openOutfitMenu",src, skincheck, pPlate)
 	end)
 end)
 
