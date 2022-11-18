@@ -1004,7 +1004,7 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
+--[[ CreateThread(function()
     exports['qb-target']:AddTargetModel(Config.VendingFoodsObjects, {
         options = {
             {
@@ -1047,6 +1047,6 @@ CreateThread(function()
         },
         distance = 2.5
     })
-end)
+end) ]]
 --#endregion Threads
 CreateThread(function() exports['qb-inventory']:LoadSuccess() end)
