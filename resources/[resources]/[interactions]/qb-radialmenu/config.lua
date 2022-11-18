@@ -256,6 +256,18 @@ rootMenuConfig =  {
             return (not pData.metadata["isdead"] and not pData.metadata["inlaststand"] and not isPolice and IsPedInAnyVehicle(PlayerPedId(), true))
         end,
     },
+
+    {
+        id = "civDeadVeh",
+         displayName = "Self Eject",
+         icon = "#police-dead",
+         functionName = "ragdoll:ejectVehicle",
+         enableMenu = function()
+            local pData = QBCore.Functions.GetPlayerData()
+            return (pData.metadata["isdead"] and pData.metadata["inlaststand"] and GetPedInVehicleSeat(GetVehiclePedIsIn(PlayerPedId(), false), -1) == PlayerPedId() )
+        end,
+    },
+
     {
         id = "Emotes",
         displayName = "Emotes",
