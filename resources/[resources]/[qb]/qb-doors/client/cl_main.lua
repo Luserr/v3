@@ -283,25 +283,25 @@ Citizen.CreateThread(function()
 	exports["qb-polyzone"]:AddBoxZone("mrpd_bollards_01", vector3(411.66, -1027.95, 29.24), 7.8, 23.4, {
         heading=0,
         debugPoly = false,
-        minZ=18.14,
-        maxZ=42.14
+        minZ=28.14,
+        maxZ=32.14
     })
     exports["qb-polyzone"]:AddBoxZone("mrpd_bollards_02", vector3(411.66, -1020.09, 29.34), 7.8, 23.4, {
         heading=0,
         debugPoly = false,
-        minZ=18.14,
-        maxZ=42.14
+        minZ=28.14,
+        maxZ=32.14
     })
 end)
 
-AddEventHandler("rp_polyzone:enter", function(zone, data)
+AddEventHandler("qb-polyzone:enter", function(zone, data)
     if zone == "mrpd_bollards_01" or zone == "mrpd_bollards_02" then
         bollards[zone].inside = true
         currentZone = zone
     end
 end)
 
-AddEventHandler("rp_polyzone:exit", function(zone)
+AddEventHandler("qb-polyzone:exit", function(zone)
     if zone == "mrpd_bollards_01" or zone == "mrpd_bollards_02" then
         bollards[zone].inside = false
         currentZone = nil
