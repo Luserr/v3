@@ -1,0 +1,9 @@
+--Name: vehoutfit | 2022-11-19T20:17:59Z
+BoxZone:Create(vector3(147.22, 320.83, 112.14), 5.0, 7.0, {
+  name="vehoutfit",
+  heading=23,
+  --debugPoly = false,
+  minZ=109.34,
+  maxZ=113.34
+})
+
