@@ -961,23 +961,23 @@ CreateThread(function()
                 end
             end
 
-            if closestBed and not isInHospitalBed then
-                if #(pos - vector3(Config.Locations["beds"][closestBed].coords.x, Config.Locations["beds"][closestBed].coords.y, Config.Locations["beds"][closestBed].coords.z)) < 2 then
-                    sleep = 5
-                    DrawText3D(Config.Locations["beds"][closestBed].coords.x, Config.Locations["beds"][closestBed].coords.y, Config.Locations["beds"][closestBed].coords.z + 0.3, Lang:t('text.lie_bed'))
-                    if IsControlJustReleased(0, 38) then
-                        if GetAvailableBed(closestBed) then
-                            TriggerServerEvent("hospital:server:SendToBed", closestBed, false)
-                        else
-                            QBCore.Functions.Notify(Lang:t('error.beds_taken'), "error")
-                        end
-                    end
-                end
-            end
-        end
-        Wait(sleep)
-    end
-end)
+--             if closestBed and not isInHospitalBed then
+--                 if #(pos - vector3(Config.Locations["beds"][closestBed].coords.x, Config.Locations["beds"][closestBed].coords.y, Config.Locations["beds"][closestBed].coords.z)) < 2 then
+--                     sleep = 5
+--                     DrawText3D(Config.Locations["beds"][closestBed].coords.x, Config.Locations["beds"][closestBed].coords.y, Config.Locations["beds"][closestBed].coords.z + 0.3, Lang:t('text.lie_bed'))
+--                     if IsControlJustReleased(0, 38) then
+--                         if GetAvailableBed(closestBed) then
+--                             TriggerServerEvent("hospital:server:SendToBed", closestBed, false)
+--                         else
+--                             QBCore.Functions.Notify(Lang:t('error.beds_taken'), "error")
+--                         end
+--                     end
+--                 end
+--             end
+         end
+         Wait(sleep)
+     end
+ end)
 
 RegisterNetEvent("ambulance:client:checkin")
 AddEventHandler("ambulance:client:checkin", function()
@@ -1367,4 +1367,4 @@ AddEventHandler('hospital:putinbed', function()
 end, false)
 
 
-----
+
