@@ -3,12 +3,12 @@ Config = {}
 Config.DoorLock = 'np' -- 'nui' or 'qb'
 Config.K4MB1 = { -- Set to true if using K4MB1's MLO's, automatically supports lower vault
     fleeca = false,
-    paleto = true
+    paleto = false
 }
 
 Config.Gabz = {
     fleeca = true,
-    paleto = false,
+    paleto = true,
     pacific = false
 }
 
