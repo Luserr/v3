@@ -1,44 +1,44 @@
 -- Vehicles to enable/disable air control
-local vehicleClassDisableControl = {
-    [0] = true,     --compacts
-    [1] = true,     --sedans
-    [2] = true,     --SUV's
-    [3] = true,     --coupes
-    [4] = true,     --muscle
-    [5] = true,     --sport classic
-    [6] = true,     --sport
-    [7] = true,     --super
-    [8] = false,    --motorcycle
-    [9] = true,     --offroad
-    [10] = true,    --industrial
-    [11] = true,    --utility
-    [12] = true,    --vans
-    [13] = false,   --bicycles
-    [14] = false,   --boats
-    [15] = false,   --helicopter
-    [16] = false,   --plane
-    [17] = true,    --service
-    [18] = true,    --emergency
-    [19] = false    --military
-}
 
+
+local flyingCars = {
+    [`oppressor`] = true,
+    [`oppressor2`] = true,
+    [`deluxo`] = true,
+    [`rcbandito`] = true,
+    [`ruiner2`] = true,
+}
 -- Main thread
 Citizen.CreateThread(function()
     while true do
         -- Loop forever and update every frame
         Citizen.Wait(0)
 
-        -- Get player, vehicle and vehicle class
-        local player = PlayerPedId()
-        local vehicle = GetVehiclePedIsIn(player, false)
-        local vehicleClass = GetVehicleClass(vehicle)
+        player = PlayerPedId()
+        vehicle = GetVehiclePedIsIn(player, false)
+        model = GetEntityModel(vehicle)
 
-        -- Disable control if player is in the driver seat and vehicle class matches array
-        if ((GetPedInVehicleSeat(vehicle, -1) == player) and vehicleClassDisableControl[vehicleClass]) then
-            -- Check if vehicle is in the air and disable L/R and UP/DN controls
-            if IsEntityInAir(vehicle) then
-                DisableControlAction(2, 59)
-                DisableControlAction(2, 60) 
+        if vehicle ~= 0 then
+            local model = GetEntityModel(vehicle)
+            local roll = GetEntityRoll(vehicle)
+        
+            if not IsThisModelABoat(model)
+              and not IsThisModelAHeli(model)
+              and not IsThisModelAPlane(model)
+              and not IsThisModelABicycle(model)
+              and not IsThisModelABike(model)
+              and not IsThisModelAJetski(model)
+              and not IsThisModelAQuadbike(model)
+              and not flyingCars[model]
+              and (IsEntityInAir(vehicle) or (roll < -50 or roll > 50)) then
+                DisableControlAction(0, 59) -- leaning left/right
+                DisableControlAction(0, 60) -- leaning up/down
+            end
+        
+            if GetPedInVehicleSeat(GetVehiclePedIsIn(vehicle, false), 0) == player then
+                if GetIsTaskActive(vehicle, 165) then
+                    SetPedIntoVehicle(vehicle, GetVehiclePedIsIn(vehicle, false), 0)
+                end
             end
         end
     end
