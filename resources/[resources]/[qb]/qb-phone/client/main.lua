@@ -40,6 +40,10 @@ local CallVolume = 0.2
 
 -- Functions
 
+local function IsPhoneOpen()
+    return PhoneData.isOpen
+end exports("IsPhoneOpen", IsPhoneOpen)
+
 local function IsNumberInContacts(num)
     for _, v in pairs(PhoneData.Contacts) do
         if num == v.number then

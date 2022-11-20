@@ -299,8 +299,10 @@ function Hotwire()
             StopAnimTask(ped, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
             if (math.random() <= Config.HotwireChance) then
                 lockpicked = false
+                local plate = GetVehicleNumberPlateText(vehicle)
                 TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
                 TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(vehicle))
+                TriggerEvent("qb-platescan:client:AddStolenPlate", vehicle, plate)
                 QBCore.Functions.Notify("Hotwire succeeded!")
             else
                 SetVehicleEngineOn(veh, false, false, true)
