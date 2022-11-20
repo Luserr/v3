@@ -23,7 +23,8 @@ files {
 	'weapons_doubleaction.meta',
 	'weapons_specialcarbine_mk2.meta',
 	'weaponhominglauncher.meta',
-	'weapon_ceramicpistol.meta'
+	'weapon_ceramicpistol.meta',
+	'weapondagger.meta'
 }
 
 	data_file 'WEAPONCOMPONENTSINFO_FILE' 'weaponcomponents.meta'
@@ -63,3 +64,5 @@ files {
 	data_file 'WEAPONINFO_FILE_PATCH' 'weaponhominglauncher.meta'
 	data_file 'WEAPONINFO_FILE' 'weapon_ceramicpistol.meta'
 	data_file 'WEAPONINFO_FILE_PATCH' 'weapon_ceramicpistol.meta'
+	data_file 'WEAPONINFO_FILE' 'weapondagger.meta'
+	data_file 'WEAPONINFO_FILE_PATCH' 'weapondagger.meta'

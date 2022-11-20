@@ -232,6 +232,20 @@
           <FirstPersonDofSubjectMagnificationPowerFactorNear value="1.055000" />
           <FirstPersonDofMaxNearInFocusDistance value="0.000000" />
           <FirstPersonDofMaxNearInFocusDistanceBlendLevel value="0.300000" />
+          <FirstPersonScopeAttachmentData>
+            <Item>
+              <Name>COMPONENT_AT_SCOPE_MPX_01</Name>
+              <FirstPersonScopeAttachmentFov value="20.000000" />
+              <FirstPersonScopeAttachmentOffset x="0.000000" y="0.000000" z="-0.000000" />
+              <FirstPersonScopeAttachmentRotationOffset x="-0.500000" y="0.000000" z="0.000000" />
+            </Item>
+            <Item>
+              <Name>COMPONENT_AT_SCOPE_VECTOR</Name>
+              <FirstPersonScopeAttachmentFov value="45.000000" />
+              <FirstPersonScopeAttachmentOffset x="0.000000" y="0.000000" z="-0.000000" />
+              <FirstPersonScopeAttachmentRotationOffset x="-0.500000" y="0.000000" z="0.000000" />
+            </Item>
+          </FirstPersonScopeAttachmentData>
           <ZoomFactorForAccurateMode value="1.300000" />
           <RecoilShakeHash>ASSAULT_RIFLE_RECOIL_SHAKE</RecoilShakeHash>
           <RecoilShakeHashFirstPerson />
@@ -285,7 +299,7 @@
                   <Default value="true" />
                 </Item>
                 <Item>
-                  <Name>COMPONENT_COMBATPDW_CLIP_02</Name>
+                  <Name>COMPONENT_VECTOR_CLIP_01</Name>
                   <Default value="false" />
                 </Item>
               </Components>
@@ -296,6 +310,10 @@
                 <Item>
                   <Name>COMPONENT_AT_MPX_LASR</Name>
                   <Default value="true" />
+                </Item>
+                <Item>
+                  <Name>COMPONENT_AT_VECTOR</Name>
+                  <Default value="false" />
                 </Item>
               </Components>
             </Item>
@@ -315,9 +333,22 @@
                   <Name>COMPONENT_AT_SCOPE_MPX_01</Name>
                   <Default value="false" />
                 </Item>
-				<Item>
+			        	<Item>
                   <Name>COMPONENT_AT_SCOPE_MPX_02</Name>
                   <Default value="true" />
+                </Item>
+                <Item>
+                  <Name>COMPONENT_AT_SCOPE_VECTOR</Name>
+                  <Default value="false" />
+                </Item>
+              </Components>
+            </Item>
+            <Item>
+              <AttachBone>gun_root</AttachBone>
+              <Components>
+				        <Item>
+                  <Name>COMPONENT_VECTOR</Name>
+                  <Default value="false" />
                 </Item>
               </Components>
             </Item>
@@ -325,7 +356,7 @@
           <GunFeedBone />
           <TargetSequenceGroup />
           <WeaponFlags>CarriedInHand Automatic Gun CanLockonOnFoot CanLockonInVehicle CanFreeAim TwoHanded AnimReload AnimCrouchFire UsableOnFoot UsableInCover AllowEarlyExitFromFireAnimAfterBulletFired AllowCloseQuarterKills HasLowCoverReloads HasLowCoverSwaps TorsoIKForWeaponBlock UseFPSAimIK UseFPSSecondaryMotion FPSOnlyExitFireAnimAfterRecoilEnds</WeaponFlags>
-          <TintSpecValues ref="TINT_DEFAULT" />
+          <TintSpecValues ref="TINT_GUNRUNNING" />
           <FiringPatternAliases ref="FIRING_PATTERN_RIFLE" />
           <ReloadUpperBodyFixupExpressionData ref="default" />
           <AmmoDiminishingRate value="3" />

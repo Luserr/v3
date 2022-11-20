@@ -1,12 +1,13 @@
 fx_version 'cerulean'
 
-games {'gta5'}
+game 'gta5'
 
-description "nice steal you fucking idiot"
+author 'Nikez'
 
 files {
-  '*.rel'
+    'nopixel_mix.dat15.rel',
+    'nopixel_game.dat151.rel'
 }
 
-data_file 'AUDIO_DYNAMIXDATA' 'dynamix.dat'
-data_file 'AUDIO_GAMEDATA' 'gamedata.dat'
+data_file 'AUDIO_DYNAMIXDATA' 'nopixel_mix.dat'
+data_file 'AUDIO_GAMEDATA' 'nopixel_game.dat'

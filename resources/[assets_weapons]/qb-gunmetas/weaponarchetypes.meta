@@ -581,5 +581,14 @@
 			<lodDist value="30"/>
 		</Item>
 		
+		<!-- ### avian excrement ### -->
+		
+		<Item>
+			<modelName>w_me_karambit</modelName>
+			<txdName>w_me_karambit</txdName>
+			<ptfxAssetName>null</ptfxAssetName>
+			<lodDist value="30"/>
+		</Item>
+		
 	</InitDatas>
 </CWeaponModelInfo__InitDataList>

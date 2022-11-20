@@ -1174,7 +1174,7 @@
           <AmmoMaxMP value="250" />
           <AmmoMax50MP value="1000" />
           <AmmoMax100MP value="9999" />
-          <AmmoFlags />
+          <AmmoFlags>InfiniteAmmo</AmmoFlags>
         </Item>
         <Item type="CAmmoProjectileInfo">
           <Name>AMMO_GRENADELAUNCHER</Name>
@@ -7115,7 +7115,7 @@
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
           <HeadShotDamageModifierPlayer value="1.500000" />
-          <Damage value="5.000000" />
+          <Damage value="32.000000" />
           <DamageTime value="0.000000" />
           <DamageTimeInVehicle value="0.000000" />
           <DamageTimeInVehicleHeadShot value="0.000000" />
