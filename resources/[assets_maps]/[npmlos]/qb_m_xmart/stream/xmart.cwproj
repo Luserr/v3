@@ -1,0 +1,32 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>xmart_exterior.ymap</Item>
+    <Item>ook_xmart_main.ymap</Item>
+    <Item>np_xmart_temp.ymap</Item>
+    <Item>lr_sc1_rd_strm_5.ymap</Item>
+    <Item>lr_sc1_rd_strm_4.ymap</Item>
+    <Item>lr_sc1_rd_long_0.ymap</Item>
+    <Item>lr_sc1_rd_critical_1.ymap</Item>
+    <Item>lr_sc1_rd.ymap</Item>
+    <Item>lr_sc1_occl_03.ymap</Item>
+    <Item>lr_sc1_05_strm_0.ymap</Item>
+    <Item>lr_sc1_00c_strm_0.ymap</Item>
+    <Item>lr_sc1_00c_long_0.ymap</Item>
+    <Item>bkr_biker_interior_placement_interior_1_biker_dlc_int_02_np_milo_.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>ook_np_xmart.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>

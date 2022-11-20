@@ -1,0 +1,68 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>np_xm_x17dlc_int_placement_interior_0_x17dlc_int_base_ent_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_1_x17dlc_int_base_loop_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_2_x17dlc_int_bse_tun_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_3_x17dlc_int_base_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_4_x17dlc_int_facility_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_5_x17dlc_int_facility2_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_6_x17dlc_int_silo_01_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_7_x17dlc_int_silo_02_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_8_x17dlc_int_sub_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_9_x17dlc_int_01_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_10_x17dlc_int_tun_straight_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_11_x17dlc_int_tun_slope_flat_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_12_x17dlc_int_tun_flat_slope_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_13_x17dlc_int_tun_30d_r_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_14_x17dlc_int_tun_30d_l_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_15_x17dlc_int_tun_straight_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_16_x17dlc_int_tun_straight_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_17_x17dlc_int_tun_slope_flat_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_18_x17dlc_int_tun_slope_flat_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_19_x17dlc_int_tun_flat_slope_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_20_x17dlc_int_tun_flat_slope_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_21_x17dlc_int_tun_30d_r_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_22_x17dlc_int_tun_30d_r_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_23_x17dlc_int_tun_30d_r_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_24_x17dlc_int_tun_30d_r_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_25_x17dlc_int_tun_30d_l_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_26_x17dlc_int_tun_30d_l_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_27_x17dlc_int_tun_30d_l_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_28_x17dlc_int_tun_30d_l_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_29_x17dlc_int_tun_30d_l_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_30_v_apart_midspaz_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_31_v_studio_lo_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_32_v_garagem_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_33_x17dlc_int_02_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_34_x17dlc_int_lab_milo_.ymap</Item>
+    <Item>np_xm_x17dlc_int_placement_interior_35_x17dlc_int_tun_entry_milo_.ymap</Item>
+    <Item>hei_ch3_01_critical_8.ymap</Item>
+    <Item>np_bunker_exterior.ymap</Item>
+    <Item>..\..\np-prison\stream\replace\ymap\lr_cs6_04_long_3.ymap</Item>
+    <Item>..\..\np-prison\stream\replace\ymap\lr_cs6_04_strm_0.ymap</Item>
+    <Item>cs6_04_grass_0.ymap</Item>
+    <Item>..\..\np-prison\stream\replace\ymap\cs6_occl_02.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>xm_x17dlc_int_base.ytyp</Item>
+    <Item>np_bunker_props.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames>
+    <Item>ch3_01_27.ybn</Item>
+    <Item>lr_cs6_04_10.ybn</Item>
+    <Item>lr_cs6_04_8.ybn</Item>
+    <Item>hi@lr_cs6_04_5.ybn</Item>
+    <Item>xm_x17dlc_int_base.ybn</Item>
+  </YbnFilenames>
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>

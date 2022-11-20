@@ -1,0 +1,26 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>bkr_biker_dlc_int_room_milo_.ymap</Item>
+    <Item>bkr_biker_hq_stab_city.ymap</Item>
+    <Item>bkr_biker_interior_placement_interior_0_biker_dlc_int_01_np_milo_.ymap</Item>
+    <Item>lost_fortress.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>biker_dlc_new.ytyp</Item>
+    <Item>bkr_biker_dlc_int_01.ytyp</Item>
+    <Item>bkr_biker_dlc_int_room.ytyp</Item>
+    <Item>bkr_prop_memorial_wall.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>
