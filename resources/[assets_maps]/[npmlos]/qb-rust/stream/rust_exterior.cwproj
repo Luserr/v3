@@ -1,0 +1,23 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>sp1_03_strm_0.ymap</Item>
+    <Item>sp1_rd_strm_1.ymap</Item>
+    <Item>sp1_rd_long_0.ymap</Item>
+    <Item>sp1_rd.ymap</Item>
+    <Item>rust_exterior.ymap</Item>
+    <Item>sp1_03.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames />
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>
