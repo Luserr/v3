@@ -53,7 +53,7 @@ PerformHttpRequest( "https://wolfknight98.github.io/wk_wars2x_web/version.txt", 
 	Citizen.Wait( 2000 )
 
 	-- Print the branding!
-	print( label )
+	--print( label )
 
 	-- Get the current resource version
 	local curVer = GetCurrentVersion()
