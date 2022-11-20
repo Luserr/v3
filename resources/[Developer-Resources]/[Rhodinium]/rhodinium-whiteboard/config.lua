@@ -1,7 +1,7 @@
 Config = {}
 
 Config.Debug = false -- Debug Status For PolyZone
-Config.DefaultBoardUrl = "https://i.imgur.com/y1oJVsZ.png" -- Don't Edit
+Config.DefaultBoardUrl = "https://cdn.discordapp.com/attachments/982104385679159296/1044016654172033034/post.png" -- Don't Edit
 
 Config.Locations = {
     ['townhallbigscreen'] = { -- COURT ROOM BIG SCREEN
