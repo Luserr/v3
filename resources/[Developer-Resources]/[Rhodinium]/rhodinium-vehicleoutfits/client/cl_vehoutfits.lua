@@ -55,7 +55,7 @@ CreateThread(function()
 		options = {
 			{
 				type = "client",
-				event = "np-car-clothing:saveCurrentOutfit",
+				event = "rhodo-vehswap:client:saveMods",
 				icon = "fas fa-plus",
 				label = "Save Current Outfit",
 				canInteract = function()
@@ -64,7 +64,7 @@ CreateThread(function()
 			},
             {
 				type = "client",
-				event = "qb-fuel:client:PayFuel",
+				event = "rhodo-vehswap:client:ChangeMods",
 				icon = "fas fa-redo",
 				label = "Swap Current Outfit",
 				canInteract = function()
@@ -73,11 +73,122 @@ CreateThread(function()
 			},
 
 		},
-		distance = 2.5,
+		distance = 2.5, 
 	})
 end)
 
-RegisterUICallback("np-ui:car-clothing:swapCurrentOutfit", function(data, cb)
+RegisterNetEvent('rhodo-vehswap:client:saveMods')
+AddEventHandler('rhodo-vehswap:client:saveMods', function()
+    exports['qb-menu']:openMenu({
+      {
+        header = "Vehicle Outfits",
+        isMenuHeader = true,
+        icon = 'fas fa-car-on'
+      },
+      {
+          header = "Outfit One",
+          txt = "Use to save or delete this outfit",
+          icon = 'fas fa-power-off',
+          params = {
+            event = "rhodo-vehswap:client:endMenu",
+            args = 1
+          }
+          
+      },
+      {
+          header = "Outfit Two",
+          txt = "Use to save or delete this outfit",
+          icon = 'fas fa-power-off',
+          params = {
+            event = "rhodo-vehswap:client:endMenu",
+            args = 2
+          }
+      },
+      {
+          header = "< Close Menu",
+          params = {
+              event = 'qb-menu:closeMenu',
+          }
+      },
+    })
+end) 
+
+RegisterNetEvent('rhodo-vehswap:client:endMenu')
+AddEventHandler('rhodo-vehswap:client:endMenu', function(outfit)
+    exports['qb-menu']:openMenu({
+      {
+        header = "Vehicle Outfits",
+        isMenuHeader = true,
+        icon = 'fas fa-car-on'
+      },
+      {
+          header = "Save Outfit",
+          txt = "Use to save or delete this outfit",
+          icon = 'fas fa-power-off',
+          params = {
+            event = "rhodo-vehswap:client:saveOutfit",
+            args = outfit
+          }
+      },
+      {
+          header = "Delete Outfit",
+          txt = "Use to apply outfit two",
+          icon = 'fas fa-power-off',
+          params = {
+            event = "rhodo-vehswap:client:deleteOutfit",
+            args = outfit 
+          }
+      },
+      {
+          header = "< Close Menu",
+          params = {
+              event = 'qb-menu:closeMenu',
+          }
+      },
+    })
+end) 
+
+RegisterNetEvent('rhodo-vehswap:client:saveOutfit')
+AddEventHandler('rhodo-vehswap:client:saveOutfit', function(outfit)
+    print("SAVED OUTFIT".. outfit)
+end)
+
+RegisterNetEvent('rhodo-vehswap:client:deleteOutfit')
+AddEventHandler('rhodo-vehswap:client:deleteOutfit', function(outfit)
+    print("DELETED OUTFIT".. outfit)
+end)
+
+RegisterNetEvent('rhodo-vehswap:client:ChangeMods')
+AddEventHandler('rhodo-vehswap:client:ChangeMods', function()
+    exports['qb-menu']:openMenu({
+      {
+        header = "Vehicle Outfits",
+        isMenuHeader = true
+      },
+      {
+          header = "Outfit One",
+          txt = "Use to apply outfit one",
+          params = {
+              event = "",
+          }
+      },
+      {
+          header = "Outfit Two",
+          txt = "Use to apply outfit two",
+          params = {
+              event = "",
+          }
+      },
+      {
+          header = "< Close Menu",
+          params = {
+              event = 'qb-menu:closeMenu',
+          }
+      },
+    })
+end) 
+
+--[[ RegisterUICallback("np-ui:car-clothing:swapCurrentOutfit", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = "done" } })
     exports["np-ui"]:closeApplication("textbox")
     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_WELDING", 0, true)
@@ -89,7 +200,7 @@ RegisterUICallback("np-ui:car-clothing:swapCurrentOutfit", function(data, cb)
     exports['np-vehicles']:SetVehicleAppearance(data.key, rd.app)
     exports['np-vehicles']:SetVehicleMods(data.key, rd.mods)
     exports['np-vehicles']:SetVehicleColors(data.key, rd.colors)
-  end)
+  end) ]]
   
   AddEventHandler("np-car-clothing:swapCurrentOutfit", function(p1, pEntity)
     exports["np-ui"]:openApplication("textbox", {
