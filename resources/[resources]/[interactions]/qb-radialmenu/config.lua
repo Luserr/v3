@@ -153,8 +153,19 @@ rootMenuConfig =  {
             local pData = QBCore.Functions.GetPlayerData()
             return (not pData.metadata["isdead"] and not pData.metadata["inlaststand"] and isPolice and onDuty and IsPedInAnyVehicle(PlayerPedId(), true))
         end,
-        subMenus = {"vehicle:menu", "vehicle:radar", "vehicle:extras"}
+        subMenus = {"vehicle:menu", "vehicle:radar", "vehicle:extras", "vehicle:callsign"}
     },
+    { 
+        id = "Vehicle",
+        displayName = "Vehicle",
+        icon = "#general-car",
+        enableMenu = function()
+            local pData = QBCore.Functions.GetPlayerData()
+            return (not pData.metadata["isdead"] and not pData.metadata["inlaststand"] and not isPolice and IsPedInAnyVehicle(PlayerPedId(), true))
+        end,
+        subMenus = {"vehicle:menu"}
+    },
+
     {
         id = "PoliceObjects",
         displayName = "Police Objects",
@@ -421,6 +432,11 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
         title = 'Vehicle Menu',
         icon = '#car',
         functionName = "veh:options"
+    },
+    ['vehicle:callsign'] = {
+        title = 'Vehicle Callsign',
+        icon = '#car',
+        functionName = "kz-callsignveh:openUI"
     },
     ['vehicle:riflerack'] = {
         title = 'Rifle Back',
