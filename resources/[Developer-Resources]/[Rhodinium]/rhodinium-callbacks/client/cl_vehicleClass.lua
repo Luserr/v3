@@ -73,18 +73,18 @@ function calculateStats(vehicle)
     local vehClass = "F"
     if isMotorCycle then
         vehClass = "M"
-    elseif perfRating > 900 then
-        vehClass = "X"
     elseif perfRating > 700 then
+        vehClass = "X"
+    elseif perfRating > 525 then
         vehClass = "S"
-    elseif perfRating > 550 then
+    elseif perfRating > 450 then
         vehClass = "A"
-    elseif perfRating > 400 then
+    elseif perfRating > 300 then
         vehClass = "B"
-    elseif perfRating > 325 then
+    elseif perfRating > 200 then
         vehClass = "C"
     else
-        vehClass = "D"
+        vehClass = "D" 
     end
     StatsCache[model] = { info = info, vehClass = vehClass }
     print(json.encode(perfRating))
