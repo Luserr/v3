@@ -7,3 +7,28 @@ BoxZone:Create(vector3(147.22, 320.83, 112.14), 5.0, 7.0, {
   maxZ=113.34
 })
 
+--Name: 5 | 2022-11-21T01:01:42Z
+BoxZone:Create(vector3(-1723.99, -1112.19, 13.96), 50.6, 36.0, {
+  name="5",
+  heading=316,
+  --debugPoly = false
+})
+
+--Name: 6 | 2022-11-21T01:03:50Z
+BoxZone:Create(vector3(-1712.07, -1122.52, 13.96), 6.0, 0.6, {
+  name="6",
+  heading=317,
+  --debugPoly = false,
+  minZ=13.36,
+  maxZ=17.36
+})
+
+--Name: 3 | 2022-11-21T01:08:49Z
+BoxZone:Create(vector3(-1708.93, -1118.89, 13.96), 2, 2, {
+  name="3",
+  heading=0,
+  --debugPoly = false,
+  minZ=12.76,
+  maxZ=14.56
+})
+

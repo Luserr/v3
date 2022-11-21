@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
             options = {
                 {
                     type = "client",
-                    event = "qb-whiteboard:changewhiteboardurl",
+                    event = "qb-whiteboard:changewhiteboardurlnew",
                     location = k,
                     icon = "fa fa-camera",
                     label = "Change Image",
@@ -67,7 +67,7 @@ Citizen.CreateThread(function()
                 },
                 {
                     type = "client",
-                    event = "qb-whiteboard:changewhiteboardurl",
+                    event = "qb-whiteboard:changewhiteboardurlnew",
                     url = Config.DefaultBoardUrl,
                     location = k,
                     icon = "fa fa-lock",
@@ -147,7 +147,7 @@ function releaseDui(id)
     table.insert(availableDuis[duiSize], id)
 end
 
-AddEventHandler("qb-whiteboard:changewhiteboardurl", function(data)
+AddEventHandler("qb-whiteboard:changewhiteboardurlnew", function(data)
     if data.url then
         TriggerServerEvent("qb-whiteboard:changewhiteboard", data.url, data.location)
     else

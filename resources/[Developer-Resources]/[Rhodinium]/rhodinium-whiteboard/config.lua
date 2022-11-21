@@ -40,7 +40,7 @@ Config.Locations = {
             width = 0.2,
             minZ = 20.54,
             maxZ = 25.00
-        },
+        }, 
         -- Props For Replace Texture
         origTxd = 'denis3d_catcafe_txd', -- Prop
         origTxn = 't_m_catcafe_imageatlas01', -- Texture
@@ -48,7 +48,26 @@ Config.Locations = {
         currentImage = Config.DefaultBoardUrl, -- Don't Edit
         inZone = false -- Don't Edit
     },
+    --[[ ['farmers_screen'] = { -- COURT ROOM BIG SCREEN
+        PolyZone = { -- Room Area For After Enter Show Image
+            coords = vector3(-1723.99, -1112.19, 13.96),
+            length = 50.6,
+            width = 36.0, 
+            minZ = 11.36,
+            maxZ = 20.00
+        }, 
+        Target = { -- Area for Show Target Options
+            coords = vector3(-1708.93, -1118.89, 13.96),
+            length = 2.0,
+            width = 2.0,
+            minZ = 12.76,
+            maxZ = 14.56
+        }, 
+        -- Props For Replace Texture
+        origTxd = 'dw_stage_screen', -- Prop
+        origTxn = 'dw_stage_screen_tx', -- Texture
+        job = false, -- Job Name Or false
+        currentImage = Config.DefaultBoardUrl, -- Don't Edit
+        inZone = false -- Don't Edit
+    }, ]]
 }
-
-  
-  
