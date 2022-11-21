@@ -8,7 +8,7 @@ exports['qb-target']:AddBoxZone("mrpd_classroom", vector3(439.24, -985.8, 34.97)
     options = { 
         {
             type = "client",
-            event = "qb-whiteboard:changewhiteboardcli",
+            event = "qb-pdwhiteboard:changewhiteboardcli",
             icon = "fas fa-images",
             label = "Change Dui",
             job = 'police',
@@ -27,7 +27,7 @@ exports['qb-target']:AddBoxZone("mrpd_meetingroom_screen", vector3(439.24, -985.
     options = { 
         {
             type = "client",
-            event = "qb-whiteboard:changewhiteboardcli",
+            event = "qb-pdwhiteboard:changewhiteboardcli",
             icon = "fas fa-images",
             label = "Change Dui",
             job = 'police',
@@ -36,8 +36,8 @@ exports['qb-target']:AddBoxZone("mrpd_meetingroom_screen", vector3(439.24, -985.
     distance = 1.5
 }) 
 
-RegisterNetEvent("qb-whiteboard:changewhiteboardcli")
-AddEventHandler("qb-whiteboard:changewhiteboardcli", function()
+RegisterNetEvent("qb-pdwhiteboard:changewhiteboardcli")
+AddEventHandler("qb-pdwhiteboard:changewhiteboardcli", function()
     --[[ local dialog = exports['qb-ui']:OpenInputMenu({
         {
             label = "Whiteboard URL",
