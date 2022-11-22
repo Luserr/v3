@@ -134,6 +134,13 @@ RegisterCommand('+platescan', function()
 			class = vehicle.class,
 		}
 	end
-	TriggerServerEvent("qb-platescan:server:ScanPlate", vData)
+	TriggerServerEvent("qb-platescan:server:ScanPlate", vData) 
 end)
-RegisterKeyMapping('+platescan', 'Scan Plate (Police)', 'keyboard', 'Y')
+
+Citizen.CreateThread(function()
+	-- Register Keybinds
+    exports["rhodinium-callbacks"]:registerKeyMapping("", "police", "Scan Plate (Police)", "+platescan", "-platescan", 'Y' )
+    --RegisterCommand("+switchWeaponMode", SwitchWeaponMode, false)
+    RegisterCommand("-platescan", function() end, false)
+end)
+--RegisterKeyMapping('+platescan', 'Scan Plate (Police)', 'keyboard', 'Y')
