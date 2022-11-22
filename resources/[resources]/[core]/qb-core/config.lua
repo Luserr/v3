@@ -12,8 +12,8 @@ QBConfig.Money.PayCheckTimeOut = 10 -- The time in minutes that it will give the
 QBConfig.Money.PayCheckSociety = false -- If true paycheck will come from the society account that the player is employed at, requires qb-management
 
 QBConfig.Player = {}
-QBConfig.Player.HungerRate = 2.5 -- Rate at which hunger goes down.
-QBConfig.Player.ThirstRate = 1.8 -- Rate at which thirst goes down.
+QBConfig.Player.HungerRate = 2.0 -- Rate at which hunger goes down.
+QBConfig.Player.ThirstRate = 1.2 -- Rate at which thirst goes down.
 QBConfig.Player.Bloodtypes = {
     "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-",
 }
@@ -27,7 +27,7 @@ QBConfig.Server.WhitelistPermission = 'admin' -- Permission that's able to enter
 QBConfig.Server.PVP = true -- Enable or disable pvp on the server (Ability to shoot other players)
 QBConfig.Server.Discord = "" -- Discord invite link
 QBConfig.Server.CheckDuplicateLicense = true -- Check for duplicate rockstar license on join
-QBConfig.Server.Permissions = {'god', 'admin', 'mod', 'reloadedcapitalist', 'reloadedgold', 'reloadedsilver', 'reloadedvip','reloadedsupporter'} -- permission list
+QBConfig.Server.Permissions = {'god', 'admin', 'mod'} -- permission list
 
 QBConfig.Notify = {}
 
