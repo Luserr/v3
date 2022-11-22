@@ -4,7 +4,7 @@ local CachedJobs = {}
 local CachedPlayers = {}
 
 
-local function getMyJobs(cid)
+local function getJobs(cid)
     local jobs = {}
     local employees = {}
     for k, v in pairs(CachedJobs) do
@@ -20,7 +20,7 @@ local function getMyJobs(cid)
     end
 
     return jobs, employees
-end
+end exports('getJobs', getJobs)
 
 local FirstStart = false
 
@@ -303,7 +303,7 @@ QBCore.Functions.CreateCallback("qb-phone:server:GetMyJobs", function(source, cb
 
     local CID = Player.PlayerData.citizenid
     local employees
-    CachedPlayers[CID], employees = getMyJobs(CID)
+    CachedPlayers[CID], employees = getJobs(CID)
 
     ---- If you were fired while being offline it will remove the job --
     if not CachedPlayers[CID][job] then
