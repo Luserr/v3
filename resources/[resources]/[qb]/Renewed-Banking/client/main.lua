@@ -177,23 +177,23 @@ RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
 end)
 
 AddEventHandler('onResourceStop', function(resource)
-    if resource == GetCurrentResourceName() then
-    	Wait(100)
-        deletePeds()
-    end
+    if resource ~= GetCurrentResourceName() then return end
+    exports['qb-target']:RemoveTargetModel(config.atms, Lang:t("menu.view_bank"))
+    exports['qb-target']:RemoveTargetEntity(peds.basic, Lang:t("menu.view_bank"))
+    exports['qb-target']:RemoveTargetEntity(peds.adv, {Lang:t("menu.view_bank"), Lang:t("menu.manage_bank")})
+
+    deletePeds()
 end)
 
 AddEventHandler('onResourceStart', function(resource)
-    if resource == GetCurrentResourceName() then
-        Wait(100)
-        if FullyLoaded then
-            createPeds()
-            SendNUIMessage({
-                action = "updateLocale",
-                translations = Translations.ui,
-            })
-        end
-    end
+    if resource ~= GetCurrentResourceName() then return end
+    if not FullyLoaded then return end
+    Wait(100)
+    createPeds()
+    SendNUIMessage({
+        action = "updateLocale",
+        translations = Translations.ui,
+    })
 end)
 
 RegisterNetEvent("Renewed-Banking:client:sendNotification", function(msg)
