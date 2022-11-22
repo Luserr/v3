@@ -42,7 +42,7 @@ function JVF:PlayerUpdate()
 			else self.LastDrawing = drawing; self.Confirming = false; end
 			if (IsControlJustPressed(0, JUtils.Keys[self.FinanceKey]) or IsDisabledControlJustPressed(0, JUtils.Keys[self.FinanceKey])) and self.LastVeh and ((GetGameTimer() - timer) > 1000) then
 				timer = GetGameTimer()	
-				if not IsPedInAnyVehicle(GetPlayerPed(-1), true) then
+				if not IsPedInAnyVehicle(PlayerPedId(), true) then
 					ESX.TriggerServerCallback('JAM_VehicleFinance:CheckFunds', function(valid, downpay, price)
 						if valid then
 							if self.Confirming and not JVS.CurBuying then
@@ -74,7 +74,7 @@ end
 
 function JVF:PositionCheck()
 	if not JVS or not JVS.DisplayPositions then return; end
-	local plyPed = GetPlayerPed(-1)
+	local plyPed = PlayerPedId()
 	local plyPos = GetEntityCoords(plyPed)	
 
 	local nearestDist,nearestVeh,nearestPos,listType,key = JVS:GetNearestDisplay(plyPos)
@@ -137,7 +137,7 @@ function JVF:PurchaseVehicle(veh, downpay, price)
             SetEntityHeading(cbVeh, spawnPos.w)
             SetVehicleOnGroundProperly(cbVeh)
             Citizen.Wait(10)
-            TaskWarpPedIntoVehicle(GetPlayerPed(-1), cbVeh, -1)
+            TaskWarpPedIntoVehicle(PlayerPedId(), cbVeh, -1)
             SetVehicleNumberPlateText(cbVeh, newPlate)
 			Citizen.Wait(10)
 	
@@ -170,7 +170,7 @@ function JVF:MechanicUpdate()
 			closestDist = false
 			closestRepo = false
 
-			local plyPos = GetEntityCoords(GetPlayerPed(-1))
+			local plyPos = GetEntityCoords(PlayerPedId())
 			local allVehicles = ESX.Game.GetVehiclesInArea(plyPos, 800000.0)
 
 			for k,v in pairs(allVehicles) do
@@ -229,8 +229,8 @@ end
 
 
 function createBlip(closestRepo)
-    --local ped = GetPlayerPed(-1)
-    --local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+    --local ped = PlayerPedId()
+    --local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 	--local blip = GetBlipFromEntity(vehicle)
 	if allreadyDone == false then
 		local closestPos = GetEntityCoords(closestRepo)
@@ -258,7 +258,7 @@ function createBlip(closestRepo)
 end
 
 function JVF:DrawRepoMarker(closestRepo, timer)
-	local plyPos = GetEntityCoords(GetPlayerPed(-1))
+	local plyPos = GetEntityCoords(PlayerPedId())
 	local dist = JUtils:GetVecDist(self.RepoPoint, plyPos)
 	if dist < 50.0 then
 		DrawMarker(1, self.RepoPoint.x, self.RepoPoint.y, self.RepoPoint.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 255, 45, 45, 100, false, true, 2, false, false, false, false)
@@ -312,7 +312,7 @@ end)
 
 RegisterCommand('checkRepay', function(source, args)
 	if not ESX then return; end
-	local plyPed = GetPlayerPed(-1)
+	local plyPed = PlayerPedId()
 	if not IsPedInAnyVehicle(plyPed, false) then ESX.ShowNotification('Get in a vehicle first.'); return; end
 	local plyVeh = GetVehiclePedIsIn(plyPed, true)
 	local vehProps = ESX.Game.GetVehicleProperties(plyVeh)
