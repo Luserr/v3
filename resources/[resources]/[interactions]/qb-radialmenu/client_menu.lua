@@ -13,7 +13,7 @@ local MAX_MENU_ITEMS = 10
 CreateThread(function()
     local keyBind = "F1"
     local keyBind2 = "-"
-    while true do
+    while true do 
         Wait(0)
         SetBigmapActive(false, false)
         if IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) and showMenu then
@@ -23,6 +23,7 @@ CreateThread(function()
         if IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) then
             showMenu = true
             local enabledMenus = {}
+            local entity = exports['rhodinium-callbacks']:GetCurrentEntity() 
             for _, menuConfig in ipairs(rootMenuConfig) do
                 if menuConfig:enableMenu() then
                     local dataElements = {}
@@ -77,6 +78,7 @@ CreateThread(function()
                 state = "show",
                 resourceName = GetCurrentResourceName(),
                 data = enabledMenus,
+                entity = entity,
                 menuKeyBind = keyBind
             })
             SetCursorLocation(0.5, 0.5)

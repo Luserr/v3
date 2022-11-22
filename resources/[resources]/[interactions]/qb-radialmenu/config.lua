@@ -18,6 +18,7 @@ local inHayesShop = false
 local inSandyRepair = false
 local inPaletoRepair = false
 local inPdMech = false
+local pEntity = exports['rhodinium-callbacks']:GetCurrentEntity() 
 local PlayerJob = {}
 Config = {}
 
