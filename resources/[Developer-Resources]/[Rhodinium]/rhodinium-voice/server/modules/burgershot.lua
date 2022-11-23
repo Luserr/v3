@@ -1,13 +1,17 @@
 local activeChannels = {}
 local channelSubscribers = {}
+
+local subscribers = {}
  
 
 --pass source and return source and active true or false
 
---[[ RPC.register("rhodinium-voice:drivethru:subscribe",function()
-    
+RPC.register("rhodinium-voice:drivethru:subscribe",function() --source is passed
+    print(source)
+    table.insert(subscribers["subscribers"], source)
+    print(json.encode(subscribers))
 end)
- ]]
+
 
 function addPlayerToRadio(pServerId, pFrequency)
     if channelSubscribers[pServerId] then

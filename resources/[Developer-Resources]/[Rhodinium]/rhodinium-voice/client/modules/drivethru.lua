@@ -1,12 +1,14 @@
 DTRadio, DTVolume, IsDTRadioOn, IsConnectedToDT, IsTransmittingToDT, DTIsHeadset = RadioChannel:new(120.6), Config.settings.dtVolume, true, false, false, false
 
+local subscribers = {}
+
 function ConnectToDTFrequency(pIsHeadset)
-    local subscribers = RPC.execute("rhodinium-voice:drivethru:subscribe")
+    local subscribers = RPC.execute("rhodinium-voice:drivethru:subscribe") --ran by source user
 
     for serverId, active in pairs(subscribers) do
-        if active then DTRadio:addSubscriber(serverId) end
+        if active then DTRadio:addSubscriber(serverId) end 
     end
-
+ 
     IsConnectedToDT = true
     DTIsHeadset = pIsHeadset
 
@@ -17,6 +19,8 @@ function ConnectToDTFrequency(pIsHeadset)
     Debug("[DriveThru] Connected to Radio")
 end
 
+
+
 function DisconnectFromDTFrequency()
     IsConnectedToDT = false
 
@@ -24,7 +28,7 @@ function DisconnectFromDTFrequency()
         StopDTTransmission(true)
     end
 
-    RPC.execute("rhodinium-voice:drivethru:unsubscribe")
+    RPC.execute("rhodinium-voice:drivethru:unsubscribe") --ran by source user
     DTIsHeadset = false
 
     --[[ exports["caue-ui"]:sendAppEvent("hud", {

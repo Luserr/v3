@@ -309,6 +309,7 @@ CreateThread(function()
   
   AddEventHandler("qb-polyzone:enter", function(zone, data)
     if zone == "np-fx:audio:stage" then
+      print("DXGSDFG")
       MumbleSetAudioInputIntent(`music`)
       if data.filter then
         TriggerServerEvent("rhodinium:voice:transmission:state", -1, data.filter, true, data.filter)
