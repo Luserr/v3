@@ -28,4 +28,4 @@ client_scripts {
     "client/classes/*",
     "client/modules/*",
     "client/*",
-}
+} 

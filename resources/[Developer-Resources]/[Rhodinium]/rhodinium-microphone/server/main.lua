@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 QBCore.Functions.CreateUseableItem("megaphone", function(source, item)
-    TriggerClientEvent("megaphone:Toggle",source)
+    TriggerClientEvent("rhodinium-megaphone:megaphone", source)
 end)
  

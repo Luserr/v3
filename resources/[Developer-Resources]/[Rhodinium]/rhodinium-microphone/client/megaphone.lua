@@ -1,51 +1,44 @@
-local holdingMega = false
-
-RegisterNetEvent("animations:client:EmoteCommandStart", function(table)
-    if table[1] == "c" and holdingMega then
-        holdingMega = false
-        exports["pma-voice"]:clearProximityOverride()
-    end
+local usingMegaphone, hasSet = false, false
+RegisterNetEvent("rhodinium-megaphone:megaphone", function()
+  usingMegaphone = not usingMegaphone
+  if not usingMegaphone then
+    TriggerEvent("animation:c")
+  end
 end)
 
-RegisterNetEvent('QBCore:Player:SetPlayerData', function(val)
-    if holdingMega then
-        local _HasMegaphone = false
-        for _, item in pairs(val.items) do
-            if item.name == "megaphone" then
-                _HasMegaphone = true
-                break
-            end
-        end
-        if not _HasMegaphone then
-            holdingMega = false
-            TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-            exports["pma-voice"]:clearProximityOverride()
-        end
+function loadAnimDict( dict )
+    while ( not HasAnimDictLoaded( dict ) ) do
+        RequestAnimDict( dict )
+        Citizen.Wait( 5 )
     end
-end)
+end
 
-RegisterNetEvent("megaphone:Toggle", function()
-    if not holdingMega then
-        holdingMega = true
-        CreateThread(function()
-            while true do
-                Wait(1000) 
-                if not IsEntityPlayingAnim(PlayerPedId(),"amb@world_human_mobile_film_shocking@female@base", "base", 3) and holdingMega then
-                    holdingMega = false
-                    TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-                    exports["pma-voice"]:clearProximityOverride()
-                    TerminateThisThread()
-                    break
-                end
-            end
-        end)
-        TriggerEvent('animations:client:EmoteCommandStart', {"megaphone"})
-        exports["pma-voice"]:overrideProximityRange(50.0, true)
-        exports["pma-voice"]:setVoiceProperty("radioEnabled", true)
-    else
-        holdingMega = false
-        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        exports["pma-voice"]:clearProximityOverride()
-        exports["pma-voice"]:setVoiceProperty("radioEnabled", false)
+CreateThread(function()
+  while true do
+    Citizen.Wait(1500)
+    local ped = PlayerPedId()
+    local vehicle = GetVehiclePedIsIn(ped)
+    if usingMegaphone then
+      local animDictionary, animName = "amb@world_human_mobile_film_shocking@female@base", "base"
+      loadAnimDict(animDictionary)
+      TriggerEvent("animation:c")
+      TriggerEvent("attachItem", "megaphone")
+      TaskPlayAnim(ped, animDictionary, animName, 1.0, 1.0, GetAnimDuration(animDictionary, animName), 49, 0, 0, 0, 0)
+      Wait(100)
+      while usingMegaphone and not IsEntityDead(ped) and (GetVehiclePedIsIn(ped) == 0) and IsEntityPlayingAnim(ped, "amb@world_human_mobile_film_shocking@female@base", "base", 3) do
+        if not hasSet then
+          TriggerEvent('rhodinium:voice:proximity:override', "megaphone", 3, 75.0, 2)
+          TriggerServerEvent("rhodinium:voice:transmission:state", -1, 'megaphone', true, 'megaphone')
+          hasSet = true
+        end
+        Wait(0)
+      end
+      usingMegaphone = false
+      hasSet = false
+      StopAnimTask(ped, animDictionary, animName, 3.0)
+      TriggerEvent("destroyProp")
+      TriggerEvent('rhodinium:voice:proximity:override', "megaphone", 3, -1, -1)
+      TriggerServerEvent("rhodinium:voice:transmission:state", -1, 'megaphone', false, 'megaphone')
     end
+  end
 end)

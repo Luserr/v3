@@ -1,15 +1,14 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'Project Sloth Microphone Script'
+description 'rhodinium-soundshit'
 
 client_scripts {
-  'client/main.lua',
-  'client/megaphone.lua',
+  'client/*.lua',
 }
 
 server_scripts {
-  'server/main.lua',
+  'server/*.lua',
 }
 
 shared_scripts {
