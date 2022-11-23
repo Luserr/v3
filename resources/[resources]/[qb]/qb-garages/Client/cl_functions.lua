@@ -286,7 +286,6 @@ function SpawnVehicle(vehicle, pGarage, Fuel, body, engine, plate, gType, IsView
             CurrentDisplayVehicle = veh
             QBCore.Functions.TriggerCallback('qb-garage:server:GetVehicleProperties', function(properties)
                 QBCore.Functions.TriggerCallback('qb-garages:server:GetVehicleWheelfit', function(wheelfit)
-                    print(wheelfitment)
                     if wheelfit ~= nil then
                         TriggerServerEvent('qb-wheelfitment_sv:setfit', wheelfit, veh)
                     end
@@ -297,7 +296,7 @@ function SpawnVehicle(vehicle, pGarage, Fuel, body, engine, plate, gType, IsView
                 --doCarDamage(veh, body, engine)
                 SetEntityAsMissionEntity(veh, true, true)
                 SetVehicleEngineOn(veh, false, false)
-                SetVehicleProperties(veh, properties)
+                --SetVehicleProperties(veh, properties)
             end, plate, IsShared)
         else
             if IsShared then
@@ -347,7 +346,7 @@ function SpawnDepotVehicle(Data)
                                     SetModelAsNoLongerNeeded(model)
 
                                     if Data.plate ~= nil then
-                                        local vehicleProps = GetVehicleProperties(OutsideVehicles)
+                                        local vehicleProps = QBCore.Functions.GetVehicleProperties(OutsideVehicles)
                                         DeleteVehicle(OutsideVehicles[Data.plate])
                                         OutsideVehicles[Data.plate] = veh
                                         TriggerServerEvent('qb-garages:server:UpdateOutsideVehicles', OutsideVehicles)
@@ -368,7 +367,7 @@ function SpawnDepotVehicle(Data)
                                         QBCore.Functions.Notify("Vehicle OFF: Engine " .. enginePercent .. "% Body: " .. bodyPercent.. "% Fuel: "..currentFuel.. "%", "primary", 4500)
                                         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
                                         SetVehicleEngineOn(veh, false, false)
-                                        SetVehicleProperties(veh, properties)
+                                        --SetVehicleProperties(veh, properties)
                                     end, Data.plate)
                                 end
                              end, Data.plate, Data.fine)
@@ -418,7 +417,7 @@ function SpawnDepotVehicle(Data)
                                 QBCore.Functions.Notify("Vehicle OFF: Engine " .. enginePercent .. "% Body: " .. bodyPercent.. "% Fuel: "..currentFuel.. "%", "primary", 4500)
                                 TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
                                 SetVehicleEngineOn(veh, false, false)
-                                SetVehicleProperties(veh, properties)
+                                --SetVehicleProperties(veh, properties)
                             end, Data.plate)
                         end
                     end, Data.plate, Data.fine)
@@ -461,7 +460,7 @@ function SpawnDepotVehicle(Data)
                             QBCore.Functions.Notify("Vehicle OFF: Engine " .. enginePercent .. "% Body: " .. bodyPercent.. "% Fuel: "..currentFuel.. "%", "primary", 4500)
                             TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
                             SetVehicleEngineOn(veh, false, false)
-                            SetVehicleProperties(veh, properties)
+                            --SetVehicleProperties(veh, properties)
                         end, Data.plate)
                     end
                 end, Data.plate, Data.fine)
@@ -504,7 +503,7 @@ function SpawnDepotVehicle(Data)
                         QBCore.Functions.Notify("Vehicle OFF: Engine " .. enginePercent .. "% Body: " .. bodyPercent.. "% Fuel: "..currentFuel.. "%", "primary", 4500)
                         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
                         SetVehicleEngineOn(veh, false, false)
-                        SetVehicleProperties(veh, properties)
+                        --SetVehicleProperties(veh, properties)
                     end, Data.plate)
                 end
             end, Data.plate, Data.fine)
@@ -606,6 +605,7 @@ SetVehicleProperties = function(vehicle, vehicleProps)
 
     if vehicleProps["windows"] then
         for windowId = 1, 13, 1 do
+            print(json.encode(vehicleProps["windows"][windowId]))
             if vehicleProps["windows"][windowId] == false then
                 SmashVehicleWindow(vehicle, windowId)
             end
@@ -675,3 +675,13 @@ GetVehicleProperties = function(vehicle)
         return vehicleProps
     end
 end
+
+--[[ "windowStatus":{"6":true,"7":true,"0":false,"1":true,"2":true,"3":true,"4":false,"5":false},
+
+"doorStatus":{"0":true,"1":false,"2":false,"3":false,"4":false,"5":false},
+
+"tireBurstState":{"0":1,"1":1,"2":false,"3":false,"4":1,"5":false},
+
+"tireBurstCompletely":{"0":false,"1":false,"2":false,"3":false,"4":false,"5":false},
+
+ ]]

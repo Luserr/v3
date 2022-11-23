@@ -148,7 +148,7 @@ RegisterNetEvent('Garages:Store', function()
     local engineDamage = math.ceil(GetVehicleEngineHealth(curVeh))
     local vehmods = QBCore.Functions.GetVehicleProperties(curVeh)
     local totalFuel = exports['qb-fuel']:GetFuel(curVeh)
-    local vehicleProps = GetVehicleProperties(curVeh)
+    local vehicleProps = QBCore.Functions.GetVehicleProperties(curVeh)
 
     QBCore.Functions.TriggerCallback('qb-garage:server:checkVehicleOwner', function(owned)
         Citizen.Wait(100)
