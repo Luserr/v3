@@ -11,7 +11,7 @@ local function addToComboZone(zone)
         comboZone:onPlayerInOutExhaustive(function(isPointInside, point, insideZones, enteredZones, leftZones)
             if leftZones ~= nil then
               for i = 1, #leftZones do
-                TriggerEvent("qb-polyzone:exit", leftZones[i].name)
+                TriggerEvent("qb-polyzone:exit", leftZones[i].name, leftZones[i].data)
               end
             end
             if enteredZones ~= nil then
