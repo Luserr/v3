@@ -23,7 +23,7 @@ CreateThread(function()
         if IsControlPressed(1, keybindControls[keyBind]) or IsControlPressed(1, keybindControls[keyBind2]) and GetLastInputMethod(2) then
             showMenu = true
             local enabledMenus = {}
-            local entity = exports['rhodinium-callbacks']:GetCurrentEntity() 
+            --local entity = exports['rhodinium-callbacks']:GetCurrentEntity() 
             for _, menuConfig in ipairs(rootMenuConfig) do
                 if menuConfig:enableMenu() then
                     local dataElements = {}
@@ -78,7 +78,7 @@ CreateThread(function()
                 state = "show",
                 resourceName = GetCurrentResourceName(),
                 data = enabledMenus,
-                entity = entity,
+                --entity = entity,
                 menuKeyBind = keyBind
             })
             SetCursorLocation(0.5, 0.5)
