@@ -17,6 +17,7 @@ client_scripts {
 	'client/job.lua',
 	'client/dead.lua',
 	'client/glclient.lua',
+	'client/unarmed_knockout.lua',
 }
 
 server_scripts {
