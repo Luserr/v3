@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponModelInfo__InitDataList>
+    <InitDatas>
+        <!-- ### launcher ### -->
+        <Item>
+            <modelName>9k120</modelName>
+            <txdName>9k120</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="100"/>
+        </Item>
+        <Item>
+            <modelName>mi28rocket</modelName>
+            <txdName>mi28rocket</txdName>
+            <ptfxAssetName>null</ptfxAssetName>
+            <lodDist value="100"/>
+        </Item>
+    </InitDatas>
+</CWeaponModelInfo__InitDataList>
