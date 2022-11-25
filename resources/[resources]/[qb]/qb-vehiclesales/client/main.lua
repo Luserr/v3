@@ -269,7 +269,7 @@ CreateThread(function()
 
             local sellBackDist = #(pos - Config.SellVehicleBack)
 
-            if sellBackDist <= 13.0 and IsPedInAnyVehicle(ped) then
+            --[[ if sellBackDist <= 13.0 and IsPedInAnyVehicle(ped) then
                 DrawMarker(2, Config.SellVehicleBack.x, Config.SellVehicleBack.y, Config.SellVehicleBack.z + 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.7, 0.6, 255, 0, 0, 155, false, false, false, true, false, false, false)
                 if sellBackDist <= 3.5 and IsPedInAnyVehicle(ped) then
                     local price
@@ -296,7 +296,7 @@ CreateThread(function()
                         end, sellVehData.plate)
                     end
                 end
-            end
+            end ]]
 
             if inRange then
                 for i = 1, #Config.OccasionSlots, 1 do
