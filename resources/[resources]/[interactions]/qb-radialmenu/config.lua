@@ -17,6 +17,7 @@ local inTunerShop = false
 local inHayesShop = false
 local inSandyRepair = false
 local inPaletoRepair = false
+local inTowFianance = false
 local inPdMech = false
 local pEntity = exports['rhodinium-callbacks']:GetCurrentEntity() 
 local PlayerJob = {}
@@ -247,6 +248,16 @@ rootMenuConfig =  {
             return (not pData.metadata["isdead"] and not pData.metadata["inlaststand"] and isTow)
         end,
         subMenus = {"tow:togglenpc", "tow:vehicle"}
+    },
+    {
+        id = "towFinance",
+         displayName = "Reposses Finance Vehicle",
+         icon = "#tow-job",
+         functionName = "rhodinium:endRepo",
+         enableMenu = function()
+            local pData = QBCore.Functions.GetPlayerData()
+            return isTow and inTowFianance
+        end,
     },
     {
         id = "Taxi",
@@ -1117,9 +1128,11 @@ AddEventHandler('QBCore:Client:SetDuty', function(duty)
     if isMedic and myJob ~= "ambulance" then isMedic = false end
     if isRealestate and myJob ~= "realestate" then isRealestate = false end
     if isPolice and myJob ~= "police" then isPolice = false end
+    if isTow and myJob ~= "tow" then isTow = false end
     if isTuner and myJob ~= "tuner" then isTuner = false end
     if isHayes and myJob ~= "hayesauto" then isHayes = false end
     if myJob == "police" then isPolice = true onDuty = duty end
+    if myJob == "tow" then isTow = true onDuty = duty end
     if myJob == "ambulance" then isMedic = true onDuty = duty end
     if myJob == "realestate" then isRealestate = true onDuty = duty end
     if myJob == "tuner" then isTuner = true onDuty = duty end
@@ -1265,6 +1278,14 @@ CreateThread(function()
         minZ=25.33,
         maxZ=27.93
     })
+
+    exports["qb-polyzone"]:AddBoxZone("towFinance", vector3(-239.42, -1183.79, 23.04), 4.2, 9.0, {
+        name="towFinance",
+        heading=0,
+        debugPoly = false,
+        minZ=21.64,
+        maxZ=25.64
+    })
 end)
 
 RegisterNetEvent('qb-polyzone:enter')
@@ -1328,6 +1349,11 @@ AddEventHandler('qb-polyzone:enter', function(name)
             inPaletoRepair = true
             exports['qb-ui']:showInteraction("Bennys")
         end
+    elseif name == "towFinance" then
+        if InVehicle then
+            inTowFianance = true
+            exports['qb-ui']:showInteraction("Finance Repossession")
+        end
     elseif name == "Ottos" then
         if InVehicle then
             inTunerShop = true
@@ -1381,6 +1407,9 @@ AddEventHandler('qb-polyzone:exit', function(name)
         exports['qb-ui']:hideInteraction()
     elseif name == "PaletoRepair" then
         inPaletoRepair = false
+        exports['qb-ui']:hideInteraction()
+    elseif name == "towFinance" then
+        inTowFianance = false
         exports['qb-ui']:hideInteraction()
     elseif name == "Ottos" then
         inTunerShop = false

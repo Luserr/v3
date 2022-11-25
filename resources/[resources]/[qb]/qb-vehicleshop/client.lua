@@ -15,7 +15,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     local citizenid = PlayerData.citizenid
     local gameTime = GetGameTimer()
     TriggerServerEvent('qb-vehicleshop:server:addPlayer', citizenid, gameTime)
-    TriggerServerEvent('qb-vehicleshop:server:checkFinance')
+    --TriggerServerEvent('qb-vehicleshop:server:checkFinance') --No longer needed as the tow drivers take care of this now.
     if not Initialized then Init() end
 end)
 

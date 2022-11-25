@@ -16,14 +16,12 @@ RegisterCommand("checkr", function()
 	FinanceCheck()
 end, false)
 
-
 -- Player Functions
  
 function FinanceCheck()
 	QBCore.Functions.TriggerCallback('JAM_VehicleFinance:PlayerLogin', function(repo)
 		if repo then 
 			QBCore.Functions.Notify('One of your vehicles has been marked for reposession. Make a payment now', 'error', 30000)
-			--ESX.ShowNotification("One of your vehicles has been marked for reposession. Make a repayment now (with /doRepay amount).") 
 			TriggerServerEvent('JAM_VehicleFinance:MarkVehicles', repo)
 		end
 	end)
@@ -38,17 +36,14 @@ local removeBlipu = false
 function MechanicUpdate(vehicle, plate)
 	while not Towables do 
 		Citizen.Wait(0)
-	end	
-
+	end
 	for key,val in pairs(Towables) do
 		print(json.encode(Towables))
 		if val.plate == plate then
 			createBlip(vehicle)
-			DrawRepoMarker(vehicle, timer)
-		end
+		end 
 	end
 end exports('MechanicUpdate', MechanicUpdate)
-
 
 function createBlip(closestRepo)
 	local PlayerData = QBCore.Functions.GetPlayerData()
@@ -80,41 +75,38 @@ function createBlip(closestRepo)
 	end
 end
 
-function DrawRepoMarker(closestRepo, timer)
-	print("MARKER SHOULD HAVE DRAWN")
-	--[[ local plyPos = GetEntityCoords(PlayerPedId())
-	local dist = GetVecDist(RepoPoint, plyPos)
-	if dist < 50.0 then
-		DrawMarker(1, RepoPoint.x, RepoPoint.y, RepoPoint.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 2.0, 255, 45, 45, 100, false, true, 2, false, false, false, false)
-		if dist < 5.0 then
-			ESX.ShowHelpNotification("Press ~INPUT_PICKUP~ to repossess the nearest vehicle.")
-			if (IsControlJustPressed(0, 86) or IsDisabledControlJustPressed(0, 86)) and (GetGameTimer() - timer > 200) then
-				timer = GetGameTimer()
-				local vehProps = ESX.Game.GetVehicleProperties(closestRepo)
-				QBCore.Functions.TriggerCallback('JAM_VehicleFinance:RepoVehicleEnd', function(valid, val)
-					if valid then 
-						local maxPassengers = GetVehicleMaxNumberOfPassengers(closestRepo)
-				    for seat = -1,maxPassengers-1,1 do
-				      local ped = GetPedInVehicleSeat(closestRepo,seat)
-				    if ped and ped ~= 0 then TaskLeaveVehicle(ped,closestRepo,16); end
-				    end 
-						ESX.Game.DeleteVehicle(closestRepo)
-						ESX.ShowNotification('You earnt $~g~'..val..'~s~ for the repossession.')
-						table.remove(Towables,k)
-					else
-						ESX.ShowNotification("You can't repossess this vehicle.")
-					end
-				end, vehProps)
+RegisterNetEvent('rhodinium:endRepo')
+AddEventHandler('rhodinium:endRepo', function(vehicle)
+	local ped = PlayerPedId()
+	local closestRepo = GetVehiclePedIsIn(ped)
+	print("Trying To Repo")
+	local vehProps = QBCore.Functions.GetVehicleProperties(closestRepo)
+	QBCore.Functions.TriggerCallback('JAM_VehicleFinance:RepoVehicleEnd', function(valid, val)
+		if valid then 
+			local maxPassengers = GetVehicleMaxNumberOfPassengers(closestRepo)
+			for seat = -1,maxPassengers-1,1 do
+			local ped = GetPedInVehicleSeat(closestRepo,seat)
+			if ped and ped ~= 0 then 
+				TaskLeaveVehicle(ped,closestRepo,16)
 			end
+			end 
+			if DoesEntityExist(closestRepo) then
+				SetEntityAsMissionEntity(closestRepo, true, true)
+				DeleteVehicle(closestRepo)
+				DeleteEntity(closestRepo)
+			end 
+			QBCore.Functions.Notify('You earnt $'..val..' for the repossession.', 'success', 7500)
+			--table.remove(Towables,k)
+		else
+			QBCore.Functions.Notify('You cant repossess this vehicle.', 'error', 7500)
 		end
-	end ]]
-end
+	end, vehProps)
+end)
 
 -- Repo Events
 
 RegisterNetEvent('JAM_VehicleFinance:RemoveRepo')
 AddEventHandler('JAM_VehicleFinance:RemoveRepo', function(vehicle)
-	--if not JVF or not JVF.Towables or not JVF.Towables[1] then return; end
 	for k,v in pairs(Towables) do
 		if v.plate == vehicle then
 			table.remove(Towables,k)
@@ -133,27 +125,3 @@ AddEventHandler('JAM_VehicleFinance:MarkForRepo', function(vehicles)
 		table.insert(Towables, v)
 	end
 end)
- 
---[[ RegisterCommand('checkRepos', function() 
-
-	local PlayerData = QBCore.Functions.GetPlayerData()
-	print("if you dont see anyting after this there is no repo")
-	--exports['mythic_notify']:SendAlert('error', 'If you dont see a message after this, That means there are currently no repos on the streets <br/ > <br/ >Try again in a short while.', 10000)
-	if PlayerData.job.name == "tow" then
-		if not Towables then 
-			print("there are no vehicles marked for reposession at the moment")
-			--exports['mythic_notify']:SendAlert('error', 'There are no vehicles marked for reposession at the moment.', 10000); 
-			return
-		end
-		for k,v in pairs(Towables) do
-			--print(json.encode(v))
-			local str = 'Plate : '..v.plate..'\nOwed : '..v.paymentamount..'\n'
-			--print(str)
-			MechanicUpdate()
-		end
-	end
-end) ]]
-
---[[ Citizen.CreateThread(function() Start(); end)
-
- ]]

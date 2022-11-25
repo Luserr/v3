@@ -49,6 +49,9 @@ dispatchCodes = {
 	["oxyruns"] =  {displayCode = '10-31', description = "Drug Activity", radius = 0, recipientList = {'police'}, blipSprite = 51, blipColour = 17, blipScale = 1.5, blipLength = 2, sound = "robberysound", offset = "false"},
 	["methruns"] =  {displayCode = '10-31', description = "Suspicious Drug Activity", radius = 0, recipientList = {'police'}, blipSprite = 514, blipColour = 43, blipScale = 1.5, blipLength = 2, sound = "robberysound", offset = "false"},
 	
+--kazumis cool ass repo system
+["repoVehicle"] =  {displayCode = '10-31', description = "Vehicle Flagged For Repossession", radius = 15.0, recipientList = {'tow'}, blipSprite = 0, blipColour = 1, blipScale = 1.5, blipLength = 2, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
+
 	-- Rainmad Heists
 
 	["artgalleryrobbery"] =  {displayCode = '10-90', description = "Art Gallery Robbery In Progress", radius = 0, recipientList = {'police'}, blipSprite = 269, blipColour = 59, blipScale = 0.5, blipLength = 2, sound = "robberysound", offset = "false", blipflash = "false"},

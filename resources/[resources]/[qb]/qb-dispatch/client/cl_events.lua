@@ -811,6 +811,33 @@ end
 
 exports('ThermiteRobbery', ThermiteRobbery)
 
+local function repoVehicle(vehdata)
+    local vehdata = vehicleData(vehicle)
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local heading = getCardinalDirectionFromHeading()
+    TriggerServerEvent("dispatch:server:notify", {
+        dispatchcodename = "repoVehicle", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "REPOSSESSION",
+        firstStreet = locationInfo,
+        model = vehdata.vehicle, -- vehicle name
+        plate = vehdata.plate, -- vehicle plate
+        priority = 2,
+        firstColor = vehdata.colour, -- vehicle color
+        heading = heading,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = _U('repoVehicle'),
+        job = { "tow" }
+    })
+end
+
+exports('repoVehicle', repoVehicle)
+
 RegisterCommand('testdispatch', function()
     TriggerEvent('qb-dispatch:client:reinforcement')
 end)
