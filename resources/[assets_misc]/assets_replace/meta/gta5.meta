@@ -1130,7 +1130,7 @@
 	  <fileType>OBJ_COVER_TUNING_FILE</fileType>
 	</Item>
 	<Item>
-	  <filename>platform:/levels/gta5/doortuning</filename>
+	  <filename>resources:/assets_replace/meta/doortuning</filename>
 	  <fileType>DOOR_TUNING_FILE</fileType>
 	</Item>
 	<Item>
