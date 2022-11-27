@@ -55,10 +55,9 @@ local surrender = false
 CreateThread(function()
 	while true do
 		Wait(5)
-		local playerPed = PlayerPedId()
 		if IsControlJustPressed(0, 38) and IsInputDisabled(2) then
 			Wait(100)
-			if not IsPedInAnyVehicle(playerPed) then 
+			if not IsPedInAnyVehicle(PlayerPedId()) then 
 				RequestAnimDict("random@arrests@busted")
 				while not HasAnimDictLoaded("random@arrests@busted") do 
 					Wait(100)
@@ -66,10 +65,10 @@ CreateThread(function()
 				if surrender then
 					handsup = false
 					surrender = false
-					ClearPedTasks(playerPed)
+					ClearPedTasks(PlayerPedId())
 				elseif handsup then
 					surrender = true
-					TaskPlayAnim(playerPed, "random@arrests@busted", "idle_a", 2.0, 2.5, -1, 3, 0, 0, 0, 0)
+					TaskPlayAnim(PlayerPedId(), "random@arrests@busted", "idle_a", 2.0, 2.5, -1, 3, 0, 0, 0, 0)
 				end
 			end
 		end
@@ -79,20 +78,19 @@ end)
 CreateThread(function()
 	while true do
 		Wait(5)
-		local playerPed = PlayerPedId()
 		if IsControlJustPressed(0, 73) and IsInputDisabled(2) then
 			Wait(100)
-			if not IsPedInAnyVehicle(playerPed) then 
+			if not IsPedInAnyVehicle(PlayerPedId()) then 
 				RequestAnimDict('missminuteman_1ig_2')
 				while not HasAnimDictLoaded('missminuteman_1ig_2') do
 					Wait(100)
 				end
 				if handsup then
 					handsup = false
-					ClearPedSecondaryTask(playerPed)
+					ClearPedSecondaryTask(PlayerPedId())
 				else
 					handsup = true
-					TaskPlayAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
+					TaskPlayAnim(PlayerPedId(), "missminuteman_1ig_2", "handsup_base", 2.0, 2.5, -1, 49, 0, 0, 0, 0 )
 				end
 			end
 

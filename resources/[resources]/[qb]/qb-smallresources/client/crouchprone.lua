@@ -5,7 +5,7 @@ proneKey = 20
 
 Citizen.CreateThread( function()
 	while true do 
-		Citizen.Wait( 1 )
+		Citizen.Wait( 5 )
 		local ped = PlayerPedId()
 		if ( DoesEntityExist( ped ) and not IsEntityDead( ped ) ) then 
 			ProneMovement()

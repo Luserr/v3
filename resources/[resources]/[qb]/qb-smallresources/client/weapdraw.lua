@@ -146,9 +146,35 @@ local holsterableWeapons = {
 	'WEAPON_DE',
 	'WEAPON_GLOCK17',
 	'WEAPON_M9',
-	'WEAPON_M1911',
+	'WEAPON_M1911', 
 	'WEAPON_FNX45',
 }
+local QBCore = exports['qb-core']:GetCoreObject()
+
+local PlayerData = {}
+local PlayerJob = {}
+local onDuty = false
+
+AddEventHandler('onResourceStart', function(resource)
+    PlayerData = QBCore.Functions.GetPlayerData()
+    PlayerJob = PlayerData.job
+    onDuty = PlayerJob.onduty
+end)
+
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    PlayerData = QBCore.Functions.GetPlayerData()
+    PlayerJob = PlayerData.job
+    onDuty = PlayerJob.onduty
+end)
+
+RegisterNetEvent('QBCore:Client:OnJobUpdate', function(job)
+    PlayerJob = job
+end)
+
+RegisterNetEvent('QBCore:Client:SetDuty')
+AddEventHandler('QBCore:Client:SetDuty', function(duty)
+    onDuty = duty
+end)
 
 local holstered = true
 local canFire = true
@@ -175,10 +201,10 @@ CreateThread(function()
 				loadAnimDict("reaction@intimidation@1h")
 				loadAnimDict("reaction@intimidation@cop@unarmed")
 				loadAnimDict("rcmjosh4")
-				loadAnimDict("weapons@pistol@")
+				loadAnimDict("weapons@pistol@") 
 				if CheckWeapon(newWeap) then
 					if holstered then
-						if QBCore.Functions.GetPlayerData().job.name == "police" then
+						if PlayerJob.name == "police" then
 							--TaskPlayAnim(ped, "rcmjosh4", "josh_leadout_cop2", 8.0, 2.0, -1, 48, 10, 0, 0, 0 )
 							canFire = false
 							currentHoldster = GetPedDrawableVariation(ped, 7)
@@ -212,7 +238,7 @@ CreateThread(function()
 							canFire = true
 						end
 					elseif newWeap ~= currWeapon and CheckWeapon(currWeapon) then
-						if QBCore.Functions.GetPlayerData().job.name == "police" then
+						if PlayerJob.name == "police" then
 							canFire = false
 
 							TaskPlayAnimAdvanced(ped, "reaction@intimidation@cop@unarmed", "intro", GetEntityCoords(ped, true), 0, 0, rot, 3.0, 3.0, -1, 50, 0, 0, 0)
@@ -259,7 +285,7 @@ CreateThread(function()
 							canFire = true
 						end
 					else
-						if QBCore.Functions.GetPlayerData().job.name == "police" then
+						if PlayerJob.name == "police" then
 							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
 							currentHoldster = GetPedDrawableVariation(ped, 7)
 							TaskPlayAnimAdvanced(ped, "rcmjosh4", "josh_leadout_cop2", GetEntityCoords(ped, true), 0, 0, rot, 3.0, 3.0, -1, 50, 0, 0, 0)
@@ -295,7 +321,7 @@ CreateThread(function()
 					end
 				else
 					if not holstered and CheckWeapon(currWeapon) then
-						if QBCore.Functions.GetPlayerData().job.name == "police" then
+						if PlayerJob.name == "police" then
 							canFire = false
 							TaskPlayAnimAdvanced(ped, "reaction@intimidation@cop@unarmed", "intro", GetEntityCoords(ped, true), 0, 0, rot, 3.0, 3.0, -1, 50, 0, 0, 0)
 							Wait(500)
