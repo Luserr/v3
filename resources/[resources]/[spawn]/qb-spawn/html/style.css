@@ -1,4 +1,4 @@
-
+@@ -1,268 +0,0 @@
 html {
   box-sizing: border-box;
 }
@@ -351,17 +351,11 @@ body {
 }
 
 .new-character-gender-selection input:checked + label {
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
+  filter: drop-shadow(0 0 5px #00f8ba57);
 }
 
 .new-character-gender-selection label {
-  -webkit-transition: all 100ms ease-in;
-  -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
-  -webkit-filter: brightness(1) grayscale(1) opacity(0.3);
-  -moz-filter: brightness(1) grayscale(1) opacity(0.3);
   filter: brightness(1) grayscale(1) opacity(0.3);
 }
 
@@ -404,6 +398,12 @@ body {
 .form-group > input {
   flex: 2;
   color: rgba(142, 142, 142, 0.9);
+}
+
+.form-group > select {
+  flex: 2;
+  display: block;
+  background-color: transparent;
 }
 
 .new-character-information input:focus {
@@ -541,7 +541,7 @@ body {
   width: 100%;
   height: 100%;
   background-image: url(images/logo.png);
-  background-size: 25%;
+  background-size: 15%;
   background-position: center;
   background-repeat: no-repeat;
   position: fixed;
@@ -828,9 +828,6 @@ body {
   pointer-events:  none;
 }
 
-.pinLoc {
-  color: rgb(0, 207, 207);
-}
 
 .spawn-icon:hover {
   transform: scale(1.1);
@@ -860,6 +857,10 @@ body {
 .stacktop {
   color: #484848;
   font-size: 0.7em;
+}
+
+.crash {
+  color:rgb(255, 124, 163);
 }
 
 .spawn-help h3 {
@@ -895,14 +896,39 @@ body {
   padding: 0 2vh;
 }
 
-input#dateofbirth {
+input#dob, input#first_name, input#last_name {
   font-size: 1.6vh;
 }
 
-input#lastname {
-  font-size: 1.6vh;
+.new-character-type {
+  flex: 2;
+  font-size: 1.2vh;
+  margin-bottom: 10px;
 }
 
-input#firstname {
-  font-size: 1.6vh;
+.new-character-type > .form-group > input:checked + label {
+  color: #00f8ba;
+}
+
+.extra-character-select {
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+
+.extra-characters-button {
+  border-radius: 0;
+  border-bottom-right-radius: 1vh;
+}
+
+.extra-characters-select {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  font-size: 1rem;
+}
+
+#delete-confirmation-input {
+  color: white;
 }

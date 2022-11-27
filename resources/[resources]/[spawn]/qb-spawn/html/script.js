@@ -28,6 +28,10 @@ let v = new Vue({
 	  longName: false,
 	  fadeHover: false,
 	  refreshClicked: false,
+	  showLiferCharacterType: false,
+	  showHardcoreCharacterType: false,
+	  extraCharData: {},
+	  deleteConfirmationInputPlaceholder: '',
 	},
 	methods: {
 		onSubmit(event) {
@@ -36,7 +40,6 @@ let v = new Vue({
 			for (const item of formData.entries()) {
 				characterData[item[0]] = item[1];
 			}
-			console.log(JSON.stringify(characterData));
 			sendNuiMessage({
 				action: "newCharacter",
 				actionData: characterData
@@ -49,18 +52,6 @@ let v = new Vue({
 				actionData: id
 			})
 			this.showDeleteConfirmation = null;
-
-			if (!this.refreshClicked) {
-				sendNuiMessage({
-					action: "refreshCharacters"
-				})
-	
-				this.refreshClicked = true
-	
-				setTimeout(() => {
-					this.refreshClicked = false
-				}, 5000)
-			}
 		},
 		hoverCharacter(id) {
 			sendNuiMessage({
@@ -178,7 +169,7 @@ let v = new Vue({
 			    this.trackingX = this.normilize(relativeX,document.body.scrollWidth)
 			    this.trackingY = this.normilize(relativeY,document.body.scrollHeight)
 
-			    if(!this.inState){
+			    if(!this.inState && (this.fadeHover || !this.currentCharData)){
 			    	this.inState = true
 			    	this.hoveringChar();
 			    	this.timer = setTimeout(function() {
@@ -222,12 +213,17 @@ let v = new Vue({
 		},
 
 		confirmDelete(){
-			this.showDeleteConfirmation = null
-			this.inState = false
+			const characterFullName = `${this.currentCharData.firstname} ${this.currentCharData.lastname}`
+			const characterFullNameTrimmed = `${this.currentCharData.firstname?.trim()} ${this.currentCharData.lastname?.trim()}`
+			const deleteConfirmationInput = document.getElementById('delete-confirmation-input').value
+			if (characterFullName !== deleteConfirmationInput && characterFullNameTrimmed !== deleteConfirmationInput) return;
+
+			this.showDeleteConfirmation = null;
 			sendNuiMessage({
 				action: "deleteCharacter",
 				actionData: this.currentCharData.citizenid
 			})
+			this.currentCharData = null;
 		},
 
 		exitCharSelect(){
@@ -239,6 +235,26 @@ let v = new Vue({
 			if (this.running){
 				if (e.keyCode == 72 && !this.showNewChar){
 					this.showHelp = !this.showHelp
+				}
+
+				if (e.keyCode == 39){ // Right Arrow
+					sendNuiMessage({
+						action: "changeChar",
+						isLeft: false
+					})
+				}
+
+				if (e.keyCode == 37){ // Left Arrow
+					sendNuiMessage({
+						action: "changeChar",
+						isLeft: true
+					})
+				}
+
+				if (e.keyCode == 13){ // Enter
+					sendNuiMessage({
+						action: "takeCurrentChar",
+					})
 				}
 			}
 		},
@@ -472,7 +488,12 @@ let v = new Vue({
 					this.spawns[i].posY = xyReturn[1]
 				}
 			}
-	    }
+		},
+
+		onExtraCharChange(event) {
+			v.$data.currentCharData = v.$data.extraCharData.find((char) => char.cid === Number(event.target.value));
+			v.$data.fadeHover = false;
+		}
 	},
 
 	created: function () {
@@ -497,6 +518,8 @@ Vue.filter('formatDate', function(value) {
 	}
 });
 
+let replaceInterval;
+
 function receivedNuiMessage(event) {
 	var data = event.data;
 
@@ -512,8 +535,9 @@ function receivedNuiMessage(event) {
 			v.$data.currentCharData = v.$data.chars[position-1]
 			if (v.$data.currentCharData != null){
 				v.$data.currentCharData.isInJail = isInJail(v.$data.currentCharData);
+
 				//Check if name length > 20 chars
-				v.$data.longName = (v.$data.currentCharData.firstname.length + v.$data.currentCharData.lastname.length);
+				v.$data.longName = (v.$data.currentCharData.firstname.length + v.$data.currentCharData.lastname.length > 20);
 			}
 		}else{
 			v.$data.currentCharData = null
@@ -522,6 +546,12 @@ function receivedNuiMessage(event) {
 	}
 
 	if (data.open){
+		/* replaceInterval = setInterval(() => {
+			$('.i18n-replace').each(function() {
+					v.$data.deleteConfirmationInputPlaceholder = _i18n('Enter character name...', 'spawn');
+					$(this).text(_i18n($(this).text(), 'spawn'));
+			});
+		}, 1000); */
 		document.getElementById("mainBox").style.display = "flex";
 		v.$data.displayCharSelect = true
 		v.$data.chars = data.chars;
@@ -529,6 +559,9 @@ function receivedNuiMessage(event) {
 	}
 
 	if (data.close){
+		/* setTimeout(() => {
+			clearInterval(replaceInterval);
+		}, 5000); */
 		document.getElementById("mainBox").style.display = "none";
 		v.$data.chars = null
 		v.$data.currentCharData = null
@@ -562,6 +595,11 @@ function receivedNuiMessage(event) {
 	if(data.showSpawnMenu){
 		v.$data.canShow = true
 	}
+
+  if(data.displayInfo) {
+    window.invokeNative('openUrl', 'https://www.nopixel.net/upload/index.php?threads/gta-public-server-rules.209062/');
+    window.invokeNative('openUrl', 'https://www.nopixel.net/upload/index.php?threads/using-the-gta-public-server-store.209058/')
+  }
 
 	if (data.updateSpawnMenu){
 		
@@ -603,6 +641,17 @@ function receivedNuiMessage(event) {
 		v.$data.spawns = spawns
 	}
 
+	if (data.showLiferCharacterType !== undefined && data.showLiferCharacterType !== null) {
+		v.$data.showLiferCharacterType = data.showLiferCharacterType;
+	}
+
+	if (data.showHardcoreCharacterType !== undefined && data.showHardcoreCharacterType !== null) {
+		v.$data.showHardcoreCharacterType = data.showHardcoreCharacterType;
+	}
+
+	if (data.extraCharData) {
+		v.$data.extraCharData = data.extraCharData;
+	}
 }
 
 function isInJail(char){

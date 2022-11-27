@@ -64,7 +64,6 @@ RegisterNetEvent('qb-houses:client:setHouseConfig', function(houseConfig)
 end)
 
 RegisterNetEvent('spawn:clientSpawnData', function(spawnData)
-	print(isJailed)
 	Login.Selected = false
 	Login.CurrentPedInfo = nil
 	Login.CurrentPed = nil
@@ -80,7 +79,7 @@ RegisterNetEvent('spawn:clientSpawnData', function(spawnData)
 	end
 
 	if isJailed >= 1 then
-		print("OLA")
+		print("Sending back to jail.")
 		Spawn.overwriteSpawn(spawnData.overwrites)
 		return
 	end

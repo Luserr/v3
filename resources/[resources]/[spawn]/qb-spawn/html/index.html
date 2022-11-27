@@ -48,7 +48,7 @@
                 <div class="character-header" v-if="!showNewChar && !currentCharData && showDeleteConfirmation == null">
                     <div class="character-button" v-if="displayCharSelect">
                       <div class="character-name-wrapper">
-                          <div class="character-name" v-bind:class="{'name-small' : longName}">Select a Character</div>
+                        <div class="character-name" v-bind:class="{'name-small' : longName}">Select a Character</div>
                       </div>
 
                       <div class="character-button-wrapper">
@@ -138,12 +138,13 @@
             <div class="new-character-container" v-if="showNewChar">
                 <div class="new-character-box">
                     <form id="new-character-form" @submit.prevent="onSubmit">
+                        <h6><span class="i18n-replace">Choose Gender</span>:</h6>
                         <div class="new-character-gender-selection">
-                            <input id="male" type="radio" name="sex" value="m" checked />
+                            <input id="male" type="radio" name="sex" value="m" required />
                             <label for="male">
                                 <img class="new-character-image" src="images/male.png" draggable="false" />
                             </label>
-                            <input id="female" type="radio" name="sex" value="f" />
+                            <input id="female" type="radio" name="sex" value="f" required />
                             <label for="female">
                                 <img class="new-character-image" src="images/female.png" draggable="false" />
                             </label>
@@ -162,11 +163,43 @@
                                 <input id="dateofbirth" name="dateofbirth" type="date" value="2000-01-01" max="2090-01-01" />
                             </div>
                         </div>
+                        <div class="new-character-type">
+                            <label class="text-center" style="font-size: 2vh">Character Type</label>
+                            <div class="form-group">
+                                <input id="normal" type="radio" name="type" value="normal" required checked />
+                                <label for="normal">Normal</label>
+                                <input v-if="showLiferCharacterType" id="lifer" type="radio" name="type" value="lifer" required />
+                                <label class="i18n-replace" v-if="showLiferCharacterType" title="Can not leave the prison." for="lifer">Prison Lifer</label>
+                                <input v-if="showHardcoreCharacterType" id="hardcore" type="radio" name="type" value="hardcore" required />
+                                <label class="i18n-replace" v-if="showHardcoreCharacterType" title="Special" for="hardcore">Hardcore</label>
+                            </div>
+                        </div>
                         <div class="new-character-submit-container">
                             <button type="button" class="new-character-submit" v-on:click="exitCharSelect">Cancel</button>
                             <button type="submit" class="new-character-submit new-character-create">Create</button>
                         </div>
                     </form>
+                </div>
+            </div>
+
+            <div class="character-header extra-character-select" v-if="extraCharData.length > 0 && displayCharSelect">
+                <div class="character-button extra-characters-button">
+                    <div class="character-name-wrapper">
+                        <div class="character-name i18n-replace">Extra Characters</div>
+                    </div>
+
+                    <div class="character-button-wrapper">
+                        <div class="character-button-left">
+                            <select class="extra-characters-select" @change="onExtraCharChange($event)">
+                                <option value="0" class="i18n-replace">
+                                    Select a Character
+                                </option>
+                                <option v-for="char in extraCharData" v-if="char != null" :value="char.citizenid">
+                                    {{char.firstname}} {{char.lastname}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -180,6 +213,10 @@
                         {{ showDeleteConfirmation.firstname }} {{ showDeleteConfirmation.lastname }}
                     </h2>
 
+                    <h2 style="margin: 0px; text-align: center; font-size: 1.8vh; padding-top: 4px">Please type in the name of the character to confirm.</h2>
+
+                    <input type="text" id="delete-confirmation-input" :placeholder="deleteConfirmationInputPlaceholder">
+
                     <div class="delete-character-button-wrapper">
                         <button class="delete-cancel character-box-btn waves-effect waves-light" v-on:click="showDeleteConfirmation = null">
                             Cancel
@@ -191,7 +228,7 @@
                 </div>
             </div>
 
-            <div id="tranCon" class="Transistion-Container"> 
+            <div id="tranCon" class="Transistion-Container">
                 <div class="logo"></div>
                 <div class="Transistion-col">
                     <div id="animTran1" class="Transistion-left"></div>
@@ -208,14 +245,15 @@
                         <i class="fas fa-chevron-circle-right" v-if="spawn.stacked"></i>
                         <i class="fas fa-star favorite" v-else-if="currentSpawnFav && spawn.info.trim() == currentSpawnFav.trim()"></i>
                         <i class="fas fa-building" :class="[spawn.info.trim().replace(' ', '')]" v-else-if="spawn.info.includes('Apartments')"></i>
-                        
+                        <i class="fas fa-taxi" v-else-if="spawn.info.includes('Rooster Cab')"></i>
                         <i class="fas fa-helicopter" v-else-if="spawn.info.includes('MRPD')"></i>
                         <i class="fas fa-hospital" v-else-if="spawn.info.includes('Pillbox Medical')"></i>
                         <i class="fas fa-car-crash" v-else-if="spawn.info.includes('Impound Yard')"></i>
                         <i class="fas fa-taxi" v-else-if="spawn.info.includes('TaxiCab Co')"></i>
                         <i class="fas fa-building" v-else-if="spawn.info.includes('Real Estate Office')"></i>
-
                         <i class="fab fa-dev"  v-else-if="spawn.info.includes('Dev Spawn')"></i>
+                        <i class="fas fa-map-pin crash" v-else-if="spawn.info.includes('Last Location')"></i>
+                        <i class="fas fa-briefcase" v-else-if="spawn.info.includes('Business')"></i>
 
                         <!-- Default places -->
                         <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('Vinewood Blvd Taxi Stand')"></i>
@@ -225,7 +263,8 @@
                         <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('Harmony Motel')"></i>
                         <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('LS Bus Station')"></i>
                         <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('The Richman Hotel')"></i>
-                        <i class="fas fa-map-pin pinLoc" v-else-if="spawn.info.includes('Last Location')"></i>
+                        <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('Sandy Shores Motel')"></i>
+                        <i class="fas fa-map-marker-alt" v-else-if="spawn.info.includes('Popular Street Bus Stop')"></i>
 
                         <!-- Else, the spawn is a home -->
                         <i class="fas fa-home homeIcon" v-else></i>
@@ -263,6 +302,7 @@
         
         </div>
 
+        <script src="i18n.js" type="text/javascript"></script>
         <script src="script.js" type="text/javascript"></script>
         <script type="text/javascript" src="js/debounce.min.js"></script>
         <script type="text/javascript" src="js/moment.min.js"></script>

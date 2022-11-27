@@ -11,6 +11,17 @@ files({
 	"html/js/*"
 })
 
-client_script "client/cl_*.lua"
 shared_script "shared/sh_spawn.lua"
-server_scripts {'@oxmysql/lib/MySQL.lua', "server/sv_*.lua"}
+
+client_scripts {
+    "@qpixel-lib/client/cl_rpc.lua",
+    "@qpixel-lib/client/cl_interface.lua",
+    "client/cl_*.lua",
+}
+
+server_scripts {
+    "@qpixel-lib/server/sv_rpc.lua",
+	'@oxmysql/lib/MySQL.lua', 
+	"server/sv_*.lua"
+}
+

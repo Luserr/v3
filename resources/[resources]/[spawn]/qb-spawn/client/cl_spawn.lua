@@ -85,10 +85,22 @@ end
 
 function Login.ShowMenu(toggle)
 	Login.Open = toggle == nil and not Login.open or toggle
+	local lifersDisabled = false
+	--local hardcoreDisabled = exports["np-config"]:GetMiscConfig("characters.hardcore.disabled")
 	if Login.Open then
 		SendNUIMessage({
-			showAnim = true
+			showAnim = true,
+			showLiferCharacterType = not lifersDisabled,
+			--showHardcoreCharacterType = not hardcoreDisabled,
 		})
+
+		--Wait(5000)
+		--local canCreate = RPC.execute('np-spawn:canCreateHardcoreCharacter')
+
+		--SendNUIMessage({
+		--	showHardcoreCharacterType = canCreate,
+		--})
+
 		return
 	end
 
