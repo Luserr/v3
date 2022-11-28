@@ -198,20 +198,26 @@ function playSomeBackgroundAudioBaby()
 	  end
 	  audioBanks()
 	  while inCasino do
-		if not IsStreamPlaying() and LoadStream("casino_walla", "DLC_VW_Casino_Interior_Sounds") then
-		  PlayStreamFromPosition(976.13, 40.51, 75.65) -- set
-		end
-		if IsStreamPlaying() and not IsAudioSceneActive("DLC_VW_Casino_General") then
-		  StartAudioScene("DLC_VW_Casino_General")
-		end
-		Wait(1000)
-	  end
-	  if IsStreamPlaying() then
-		StopStream()
-	  end
-	  if IsAudioSceneActive("DLC_VW_Casino_General") then
-		StopAudioScene("DLC_VW_Casino_General")
-	  end
+      if IsStreamPlaying() then
+        StopStream()
+      end
+      if IsAudioSceneActive("DLC_VW_Casino_General") then
+        StopAudioScene("DLC_VW_Casino_General")
+      end
+      if not IsStreamPlaying() and LoadStream("casino_walla", "DLC_VW_Casino_Interior_Sounds") then
+        PlayStreamFromPosition(996.13,38.48,71.07)
+      end
+      if IsStreamPlaying() and not IsAudioSceneActive("DLC_VW_Casino_General") then
+        StartAudioScene("DLC_VW_Casino_General")
+      end
+      Citizen.Wait(1000)
+    end
+    if IsStreamPlaying() then
+      StopStream()
+    end
+    if IsAudioSceneActive("DLC_VW_Casino_General") then
+      StopAudioScene("DLC_VW_Casino_General")
+    end
 	end)
 end
 
