@@ -1120,6 +1120,10 @@ AddEventHandler('QBCore:Server:PlayerLoaded', function(Player)
 		return GetItemsByName(Player.PlayerData.source, item)
 	end)
 
+	QBCore.Functions.AddPlayerMethod(Player.PlayerData.source, "GetItemCountByName", function(item)
+        return GetItemCountByName(Player.PlayerData.source, item)
+    end)
+
 	QBCore.Functions.AddPlayerMethod(Player.PlayerData.source, "ClearInventory", function(filterItems)
 		ClearInventory(Player.PlayerData.source, filterItems)
 	end)
@@ -1152,6 +1156,10 @@ AddEventHandler('onResourceStart', function(resourceName)
 		QBCore.Functions.AddPlayerMethod(k, "GetItemsByName", function(item)
 			return GetItemsByName(k, item)
 		end)
+
+		QBCore.Functions.AddPlayerMethod(k, "GetItemCountByName", function(item)
+            return GetItemCountByName(k, item)
+        end)
 
 		QBCore.Functions.AddPlayerMethod(k, "ClearInventory", function(filterItems)
 			ClearInventory(k, filterItems)
@@ -2485,4 +2493,15 @@ function weaponserialSQL(serial, owner, information, class, model, image)
 	exports.oxmysql:execute('INSERT INTO mdt_weaponinfo (serial, owner, information, weapClass, weapModel, image) VALUES (?, ?, ?, ?, ?, ?)', {serial, owner, information, class, model, 'img/not-found.webp'})
 end
 
-
+local function GetItemCountByName(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+    item = tostring(item):lower()
+    local count = 0
+    for k,v in pairs(Player.PlayerData.items) do
+        if v.name == item then
+            count = count + v.amount
+        end
+    end
+    return count
+end
+exports("GetItemCountByName", GetItemCountByName)
