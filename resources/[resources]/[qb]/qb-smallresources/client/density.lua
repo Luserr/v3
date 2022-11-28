@@ -16,7 +16,7 @@ Citizen.CreateThread(function()
 		SetCreateRandomCops(false)
 		SetCreateRandomCopsNotOnScenarios(false)
 		SetCreateRandomCopsOnScenarios(false)
-    	--[[ SetVehicleModelIsSuppressed(GetHashKey("rubble"), true)
+    	SetVehicleModelIsSuppressed(GetHashKey("rubble"), true)
     	SetVehicleModelIsSuppressed(GetHashKey("dump"), true)
     	SetVehicleModelIsSuppressed(GetHashKey("taco"), true)
     	SetVehicleModelIsSuppressed(GetHashKey("biff"), true)
@@ -28,7 +28,7 @@ Citizen.CreateThread(function()
 		SetVehicleModelIsSuppressed(GetHashKey("bullet"), true)
 		SetVehicleModelIsSuppressed(GetHashKey("carbonizzare"), true)
 		SetVehicleModelIsSuppressed(GetHashKey("neon"), true)
-		SetVehicleModelIsSuppressed(GetHashKey("tropos"), true) ]]
+		SetVehicleModelIsSuppressed(GetHashKey("tropos"), true)
     end
 end)
 
