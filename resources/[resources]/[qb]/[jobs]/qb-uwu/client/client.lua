@@ -141,16 +141,16 @@ Citizen.CreateThread(function()
 		  distance = 2.5
 	})
 	
-	exports['qb-target']:AddBoxZone("HenReceipt1", vector3(-584.07, -1058.69, 22.34), 0.5, 0.5, { name="HenReceipt1", heading = 0, debugPoly=debug, minZ = 19.04, maxZ = 23.04, }, 
+	--[[ exports['qb-target']:AddBoxZone("HenReceipt1", vector3(-584.07, -1058.69, 22.34), 0.5, 0.5, { name="HenReceipt1", heading = 0, debugPoly=debug, minZ = 19.04, maxZ = 23.04, }, 
 		{ options = { { event = "qb-uwu:client:open:register", icon = "fas fa-credit-card", label = "Charge Customer", job = "uwu" },
 					  { event = "qb-uwu:client:open:payment", icon = "fas fa-cash-register", label = "Make Payment", }, },
 		  distance = 2.0
-	})
-	exports['qb-target']:AddBoxZone("HenReceipt2", vector3(-584.09, -1061.47, 22.34), 0.5, 0.5, { name="HenReceipt2", heading = 0, debugPoly=debug, minZ = 19.04, maxZ = 23.04, }, 
+	}) ]]
+	--[[ exports['qb-target']:AddBoxZone("HenReceipt2", vector3(-584.09, -1061.47, 22.34), 0.5, 0.5, { name="HenReceipt2", heading = 0, debugPoly=debug, minZ = 19.04, maxZ = 23.04, }, 
 		{ options = { { event = "qb-uwu:client:open:register", icon = "fas fa-credit-card", label = "Charge Customer", job = "uwu" },
 					  { event = "qb-uwu:client:open:payment", icon = "fas fa-cash-register", label = "Make Payment", }, },
 		  distance = 2.0
-	})	
+	}) ]]	
 	--Coffee
 	exports['qb-target']:AddBoxZone("coffeebeans", vector3(-586.8, -1061.89, 22.34), 0.7, 0.5, { name="coffeebeans", heading = 0, debugPoly=debug, minZ=21.99, maxZ=23.19 }, 
 		{ options = { { event = "qb-uwu:Menu:Coffee", icon = "fas fa-mug-hot", label = "Pour Coffee", job = "uwu" }, },

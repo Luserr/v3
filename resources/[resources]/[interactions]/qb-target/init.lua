@@ -400,13 +400,13 @@ Config.BoxZones = {
     },
     ["FrontCounterTray1"] = {
         name = "FrontCounterTray1",
-        coords = vector3(-1196.01, -891.45, 14.03),
-        length = 0.5,
-        width = 0.5,
-        heading = 122,
+        coords = vector3(-1193.89, -894.39, 13.98),
+        length = 0.6,
+        width = 0.6,
+        heading = 305,
         debugPoly = false,
-        minZ = 14.03,
-        maxZ = 14.30,
+        minZ = 10.38,
+        maxZ = 14.38,
         options = {
             {
                 type = "client",
@@ -420,13 +420,13 @@ Config.BoxZones = {
     },
     ["FrontCounterTray2"] = {
         name = "FrontCounterTray2",
-        coords = vector3(-1194.67, -893.23, 14.03),
-        length = 0.5,
-        width = 0.5,
-        heading = 122,
+        coords = vector3(-1194.9, -892.84, 13.98),
+        length = 0.6,
+        width = 0.6,
+        heading = 305,
         debugPoly = false,
-        minZ = 14.03,
-        maxZ = 14.30,
+        minZ = 10.38,
+        maxZ = 14.38,
         options = {
             {
                 type = "client",
@@ -434,7 +434,7 @@ Config.BoxZones = {
                 event = "qb-burgershotjob:Tray2",
                 icon = "fas fa-box",
                 label = "Tray 2",
-            }
+            } 
         },
         distance = 3.0
     },

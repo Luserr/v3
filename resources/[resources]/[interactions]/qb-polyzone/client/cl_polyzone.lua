@@ -1,88 +1,120 @@
-local DEBUG_ENABLED = false
-local comboZone = nil
-local insideZone = false
-local createdZones = {}
+debugEnabled, debugMaxDistance, IsInVehicle = false, 300.0, false
 
-local function addToComboZone(zone)
-    if comboZone ~= nil then
-        comboZone:AddZone(zone)
+CurrentPolyTarget = vector3(0.0, 0.0, 0.0)
+
+TargetZones, TargetComboZone = {}
+
+function AddToComboZone(zone)
+    if TargetComboZone ~= nil then
+        TargetComboZone:AddZone(zone)
     else
-        comboZone = ComboZone:Create({ zone }, { name = "qb-polyzone" })
-        comboZone:onPlayerInOutExhaustive(function(isPointInside, point, insideZones, enteredZones, leftZones)
-            if leftZones ~= nil then
-              for i = 1, #leftZones do
-                TriggerEvent("qb-polyzone:exit", leftZones[i].name, leftZones[i].data)
-              end
-            end
+        TargetComboZone = ComboZone:Create({ zone }, { name = "qb-polyzone" })
+
+        TargetComboZone:onPointInOutExhaustive(function() return GetTargetCoords() end,function(isPointInside, point, insideZones, enteredZones, leftZones)
             if enteredZones ~= nil then
-              for i = 1, #enteredZones do
-                TriggerEvent("qb-polyzone:enter", enteredZones[i].name, enteredZones[i].data, enteredZones[i].center)
-              end
+                for _, zone in ipairs(enteredZones) do
+                    TriggerEvent("qb-polyzone:enter", zone.name, zone.data, zone.center)
+                end
             end
-        end, 500)
+
+            if leftZones ~= nil then
+                for _, zone in ipairs(leftZones) do
+                    TriggerEvent("qb-polyzone:exit", zone.name, zone.data)
+                end
+            end
+        end, 250)
     end
 end
 
-local function doCreateZone(options)
-  if options.data and options.data.id then
-    local key = options.name .. "_" .. tostring(options.data.id)
-    if not createdZones[key] then
-      createdZones[key] = true
-      return true
-    else
-      print('polyzone with name/id already added, skipping: ', key)
-      return false
+function CreateZone(options)
+    if options.data and options.data.id then
+        local key = options.name .. "_" .. tostring(options.data.id)
+
+        if not TargetZones[key] then
+            TargetZones[key] = true
+        else
+            print('polyzone with name/id already added, skipping: ', key)
+        end
     end
-  end
-  return true
-end
-
-local function addZoneEvent(eventName, zoneName)
-  if comboZone.events and comboZone.events[eventName] ~= nil then
-    return
-  end
-  comboZone:addEvent(eventName, zoneName)
-end
-
-local function addZoneEvents(zone, zoneEvents)
-  if zoneEvents == nil then return end
-
-  for _, v in ipairs(zoneEvents) do
-    addZoneEvent(v, zone.name)
-  end
 end
 
 exports("AddBoxZone", function(name, vectors, length, width, options)
     if not options then options = {} end
     options.name = name
-    options.debugPoly = DEBUG_ENABLED or options.debugPoly
-    if not doCreateZone(options) then return end
+    CreateZone(options)
     local boxCenter = type(vectors) ~= 'vector3' and vector3(vectors.x, vectors.y, vectors.z) or vectors
     local zone = BoxZone:Create(boxCenter, length, width, options)
-    addToComboZone(zone)
+    AddToComboZone(zone)
 end)
 
-local function addCircleZone(name, center, radius, options)
-  if not options then options = {} end
-  options.name = name
-  options.debugPoly = DEBUG_ENABLED or options.debugPoly
-  if not doCreateZone(options) then return end
-  local circleCenter = type(center) ~= 'vector3' and vector3(center.x, center.y, center.z) or center
-  local zone = CircleZone:Create(circleCenter, radius, options)
-  addToComboZone(zone)
-end
-exports("AddCircleZone", addCircleZone)
-
-exports("AddPolyZone", function(name, vectors, options)
+exports("AddCircleZone", function(name, center, radius, options)
     if not options then options = {} end
     options.name = name
-    options.debugPoly = DEBUG_ENABLED or options.debugPoly
-    if not doCreateZone(options) then return end
-    local zone = PolyZone:Create(vectors, options)
-    addToComboZone(zone)
+    CreateZone(options)
+    local circleCenter = type(center) ~= 'vector3' and vector3(center.x, center.y, center.z) or center
+    local zone = CircleZone:Create(circleCenter, radius, options)
+    AddToComboZone(zone)
 end)
 
-RegisterNetEvent("qb-polyzone:createCircleZone")
-AddEventHandler("qb-polyzone:createCircleZone", function(name, ...)
-  addCircleZone(name, ...)
+exports("GetZones", function(point)
+    return TargetComboZone:getZones(point)
 end)
+
+function GetForwardVector(rotation)
+    local rot = (math.pi / 180.0) * rotation
+    return vector3(-math.sin(rot.z) * math.abs(math.cos(rot.x)), math.cos(rot.z) * math.abs(math.cos(rot.x)), math.sin(rot.x))
+end
+
+function RayCast(origin, target, options, ignoreEntity, radius)
+    local handle = StartShapeTestRay(origin.x, origin.y, origin.z, target.x, target.y, target.z, options, ignoreEntity, 0)
+    return GetShapeTestResult(handle)
+end
+
+function GetTargetCoords()
+    local CameraCoords = GetGameplayCamCoord()
+    local ForwardVectors = GetForwardVector(GetGameplayCamRot(2))
+    local ForwardCoords = CameraCoords + (ForwardVectors * (IsInVehicle and 6.5 or 5.0))
+    local TargetCoords = vector3(0.0, 0.0, 0.0)
+
+    if ForwardVectors then
+        local _, hit, targetCoords, _, _ = RayCast(CameraCoords, ForwardCoords, 17, nil, 0.1)
+
+        TargetCoords = targetCoords
+
+        if debugEnabled and hit ~= 0 then
+            DrawMarker(28, targetCoords.x, targetCoords.y, targetCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.01, 0.01, 0.01, 255, 0, 0, 255, false, false, 2, nil, nil, false)
+        end
+    end
+
+    return TargetCoords
+end
+
+AddEventHandler('baseevents:enteredVehicle', function()
+    IsInVehicle = true
+end)
+
+AddEventHandler('baseevents:leftVehicle', function()
+    IsInVehicle = false
+end)
+
+local function toggleDebug(state)
+    if state == debugEnabled then return end
+    debugEnabled = state
+    if debugEnabled then
+        while debugEnabled do
+            local plyPos = GetEntityCoords(PlayerPedId()).xy
+            for i, zone in ipairs(TargetComboZone.zones) do
+                if zone and not zone.destroyed and #(plyPos - zone.center.xy) < debugMaxDistance then
+                    zone:draw()
+                end
+            end
+            Wait(0)
+        end
+    end
+end
+
+if GetConvar("sv_environment", "prod") == "debug" then
+    RegisterCommand("qb-polyzone:debug", function (src, args)
+        toggleDebug(not debugEnabled)
+    end)
+end
