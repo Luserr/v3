@@ -24,6 +24,117 @@ local keyholderMenu = {}
 local keyholderOptions = {}
 local fetchingHouseKeys = false
 
+RegisterCommand('furni', function()
+    openFurniture()
+end)
+
+RegisterNetEvent("qpixel-housing:editOptions", function(pParams)
+    if pParams.action == "enter" then
+        enterEdit(pParams.propertyId)
+    elseif pParams.action == "exit" then
+        exitEdit(true)
+    elseif pParams.action == "garage" then
+        setGarage()
+    elseif pParams.action == "stash" then
+        setInventory()
+    elseif pParams.action == "backdoor" then
+        setBackdoor()
+    elseif pParams.action == "wardrobe" then
+        setCharChanger()
+    elseif pParams.action == "crafting" then
+        switchBenchInventory(true)
+    elseif pParams.action == "furniture" then
+        openFurniture()
+    end
+end)
+
+function openFurniture()
+   --[[  if Housing.currentlyEditing == false then
+        --TriggerEvent("DoLongHudText", "Out of edit mode", 2)
+        return
+    end
+
+    if not hasCorrectFlags("canHaveFurniture", Housing.currentlyEditing) then
+        --TriggerEvent("DoLongHudText", "Unavailable for property.", 2)
+        return
+    end
+
+    if not Housing.currentlyInsideBuilding then
+        --TriggerEvent("DoLongHudText", "you're not inside the property", 2)
+        return
+    end
+ ]]
+    buildFurnitureData(ClosestHouse)
+end
+
+function buildFurnitureData(ClosestHouse)
+    --[[ local zoneData = Housing.typeInfo[Housing.info[ClosestHouse].model].zone
+    local off = zoneData.offset ]]
+    local center = vector3(Config.Houses[ClosestHouse].coords.enter.x, Config.Houses[ClosestHouse].coords.enter.y, Config.Houses[ClosestHouse].coords.enter.z)
+    local hasCraftingProg = true
+    local hasProgression = false
+
+    if hasCraftingProg then
+        local progressionData = 0
+        hasProgression = progressionData ~= nil and progressionData > 0
+    end
+
+    local specials = {}
+    if hasProgression or (not hasCraftingProg) then
+        specials[#specials+1] = "gr_prop_gr_bench_02b"
+    end
+
+    local data = {
+        name = ClosestHouse,
+        special = specials,
+        autosave = true,
+        zone = {
+            pos = center,
+            length = 30.0,
+            width = 30.0,
+            minZ = 50.0,
+            maxZ = 2.0,
+            heading = 0.0
+        },
+        modules = {
+            "objects",
+        },
+    }
+
+    TriggerServerEvent("CheckFurniture", data, ClosestHouse)
+end
+
+
+--[[ {"autosave":true,
+"modules":["objects"],
+"special":[],
+"zone":
+    {"minZ":2.0,
+    "pos":{"x":1010.8424072265625,"y":-423.6152038574219,"z":6.36940336227417},
+    "maxZ":8.0,
+    "heading":0.0,
+    "width":22.0,
+    "length":12.0},
+    "name":"mp3"}
+
+    [{"changed":true,
+    "coords":"{\"y\":2536.699951171875,\"z\":12.59767150878906,\"x\":714.5999755859375}",
+    "realName":"vw_prop_casino_slot_02a",
+    "quat":"{\"y\":-0.0,\"z\":-0.70710664987564,\"w\":0.70710682868957,\"x\":0.0}",
+    "id":-1,
+    "dataK":1,
+    "model":-1519644200}]
+
+    [{"realName":"v_corp_facebeanbag",
+    "changed":true,
+    "dataK":1,
+    "quat":"{\"y\":0.0,\"z\":0.0,\"w\":1.0,\"x\":0.0}",
+    "model":-896397685,
+    "id":-1,
+    "coords":"{\"y\":-422.5,\"z\":5.39499998092651,\"x\":1003.0}"},
+    
+    {"realName":"v_res_cherubvase","changed":true,"dataK":2,"quat":"{\"y\":0.0,\"z\":0.0,\"w\":1.0,\"x\":0.0}","model":-730024798,"id":-1,"coords":"{\"y\":-423.6000061035156,\"z\":5.29484128952026,\"x\":1003.6993408203125}"},{"realName":"v_res_fashmag1","changed":true,"dataK":3,"quat":"{\"y\":0.0,\"z\":0.0,\"w\":1.0,\"x\":0.0}","model":-2042781782,"id":-1,"coords":"{\"y\":-423.70001220703127,\"z\":5.39151906967163,\"x\":1002.5999755859375}"}] ]]
+
 -- Functions
 
 local function DrawText3Ds(x, y, z, text)

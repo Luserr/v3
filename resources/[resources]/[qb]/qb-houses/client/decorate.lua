@@ -57,7 +57,7 @@ end
 local function SaveDecorations()
 	if ClosestHouse then
 		if SelectedObj then
-			if SelObjId ~= 0 then
+			if SelObjId ~= 0 then 
 				ObjectList[SelObjId] = {hashname = SelObjHash, x = SelObjPos.x, y = SelObjPos.y, z = SelObjPos.z, rotx = SelObjRot.x, roty = SelObjRot.y, rotz = SelObjRot.z, object = SelectedObj, objectId = SelObjId}
 			else
 				if ObjectList then
